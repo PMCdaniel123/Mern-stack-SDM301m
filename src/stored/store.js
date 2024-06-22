@@ -1,12 +1,11 @@
-import { ENV } from "@/constant/environments";
+import { ENV } from "../constant/environments"
 import { configureStore } from "@reduxjs/toolkit";
 import memberReducer from "./reducers/memberReducer";
 import popupReducer from "./reducers/popupReducer";
-import authReducer from "./reducers/authReducer";
 
 const store = configureStore({
   reducer: {
-    auth: authReducer,
+    // auth: authReducer,
     popup: popupReducer,
     member: memberReducer,
   },
