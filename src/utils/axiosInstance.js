@@ -1,7 +1,7 @@
 // utils/axiosInstance
 import axios from 'axios';
-import { BASE_URL } from '@/constants/environments.js';
 import tokenMethod from '@/utils/token.js';
+import { BASE_URL } from '@/constant/environments';
 
 const axiosInstance = axios.create({
   baseURL: BASE_URL,

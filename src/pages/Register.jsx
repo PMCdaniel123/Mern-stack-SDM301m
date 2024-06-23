@@ -1,5 +1,5 @@
 import React from 'react';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import { Button, Input } from 'antd';
 import {
   UserOutlined,
@@ -11,7 +11,7 @@ import ConfigAntdButton from '../components/Button/ConfigAntdButton';
 
 const Register = () => {
   const {
-    register,
+    control,
     handleSubmit,
     formState: { errors },
   } = useForm();
@@ -31,51 +31,77 @@ const Register = () => {
         </h2>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div>
-            <Input
-              prefix={<UserOutlined className="site-form-item-icon" />}
-              placeholder="Member name"
-              className="p-2 w-full"
-              {...register('membername', {
-                required: 'Member name is required',
-              })}
+            <Controller
+              name="membername"
+              control={control}
+              defaultValue=""
+              rules={{ required: 'Member name is required' }}
+              render={({ field }) => (
+                <Input
+                  {...field}
+                  prefix={<UserOutlined className="site-form-item-icon" />}
+                  placeholder="Member name"
+                  className="p-2 w-full"
+                />
+              )}
             />
             {errors.membername && (
               <p className="text-red-500">{errors.membername.message}</p>
             )}
           </div>
           <div>
-            <Input
-              prefix={<LockOutlined className="site-form-item-icon" />}
-              type="password"
-              placeholder="Password"
-              className="p-2 w-full"
-              {...register('password', { required: 'Password is required' })}
+            <Controller
+              name="password"
+              control={control}
+              defaultValue=""
+              rules={{ required: 'Password is required' }}
+              render={({ field }) => (
+                <Input
+                  {...field}
+                  prefix={<LockOutlined className="site-form-item-icon" />}
+                  type="password"
+                  placeholder="Password"
+                  className="p-2 w-full"
+                />
+              )}
             />
             {errors.password && (
               <p className="text-red-500">{errors.password.message}</p>
             )}
           </div>
           <div>
-            <Input
-              prefix={<SkinOutlined className="site-form-item-icon" />}
-              placeholder="Name"
-              className="p-2 w-full"
-              {...register('name', {
-                required: 'Name is required',
-              })}
+            <Controller
+              name="name"
+              control={control}
+              defaultValue=""
+              rules={{ required: 'Name is required' }}
+              render={({ field }) => (
+                <Input
+                  {...field}
+                  prefix={<SkinOutlined className="site-form-item-icon" />}
+                  placeholder="Name"
+                  className="p-2 w-full"
+                />
+              )}
             />
             {errors.name && (
               <p className="text-red-500">{errors.name.message}</p>
             )}
           </div>
           <div>
-            <Input
-              prefix={<FieldTimeOutlined className="site-form-item-icon" />}
-              placeholder="Year of birth"
-              className="p-2 w-full"
-              {...register('YOB', {
-                required: 'Year of birth is required',
-              })}
+            <Controller
+              name="YOB"
+              control={control}
+              defaultValue=""
+              rules={{ required: 'Year of birth is required' }}
+              render={({ field }) => (
+                <Input
+                  {...field}
+                  prefix={<FieldTimeOutlined className="site-form-item-icon" />}
+                  placeholder="Year of birth"
+                  className="p-2 w-full"
+                />
+              )}
             />
             {errors.YOB && <p className="text-red-500">{errors.YOB.message}</p>}
           </div>
