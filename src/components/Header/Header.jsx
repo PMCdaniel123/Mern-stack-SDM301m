@@ -6,6 +6,7 @@ import { PATHS } from '@/constant/path';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { handleLogout } from '@/store/reducers/authReducer';
 
 const LinkStyled = styled.a`
   color: #fff !important;
@@ -17,11 +18,12 @@ const LinkStyled = styled.a`
 `;
 
 const Header = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const _onLogout = (e) => {
     e?.preventDefault();
+    dispatch(handleLogout())
     navigate(PATHS.LOGIN);
   };
 

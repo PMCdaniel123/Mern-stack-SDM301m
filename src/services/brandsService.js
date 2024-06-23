@@ -20,7 +20,7 @@ const CreateBrands = async ({ brandName }) => {
 
 const UpdateBrands = async ({ id, brandName }) => {
   try {
-    const data = await axiosInstance.put(UPDATE_BRANDS + '/' + id, {
+    const data = await axiosInstance.patch(UPDATE_BRANDS + '/' + id, {
       brandName,
     });
     return data;
@@ -43,7 +43,7 @@ const DeleteBrands = async (id) => {
 const GetBrandsList = async () => {
   try {
     const data = await axiosInstance.get(GET_BRANDS);
-    return data;
+    return data.brands;
   } catch (error) {
     const errorResponse = error;
     throw new Error(errorResponse.response?.data.message);
