@@ -3,19 +3,19 @@ import { useDispatch } from 'react-redux';
 import { useMutation } from '@tanstack/react-query';
 import { closePopup } from '@/store/reducers/popupReducer';
 import { queryClient } from '@/constant/storage';
-import BrandsManagementListAPI from '@/services/brandsService';
+import WatchesManagementListAPI from '@/services/watchesService';
 
-export const useDeleteBrand = (id) => {
+export const useDeleteWatch = (id) => {
   const dispatch = useDispatch();
 
   return useMutation({
-    mutationFn: () => BrandsManagementListAPI.DeleteBrands(id),
+    mutationFn: () => WatchesManagementListAPI.DeleteWatches(id),
     onSuccess: () => {
-      dispatch(closePopup('Delete Brand'));
-      queryClient.invalidateQueries({ queryKey: ['getBrandsList'] });
+      dispatch(closePopup('Delete Watch'));
+      queryClient.invalidateQueries({ queryKey: ['getWatchesList'] });
       notification.success({
         message: 'Delete successfully',
-        description: 'Delete a Brand successfully',
+        description: 'Delete a Watch successfully',
       });
     },
     onError: (error) => {

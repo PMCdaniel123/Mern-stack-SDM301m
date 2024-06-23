@@ -19,7 +19,6 @@ const UpdateBrand = ({ id, name }) => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
     updateBrand.mutate({
       id: id,
       brandName: data.brandName,

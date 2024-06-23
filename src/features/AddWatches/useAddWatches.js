@@ -1,30 +1,30 @@
 import { queryClient } from '@/constant/storage';
+import WatchesManagementListAPI from '@/services/watchesService';
 import { closePopup } from '@/store/reducers/popupReducer';
 import { useMutation } from '@tanstack/react-query';
 import { notification } from 'antd';
 import { useDispatch } from 'react-redux';
-import BrandsManagementListAPI from '@/services/brandsService';
 
-const useUpdateBrand = () => {
+const useAddWatches = () => {
   const dispatch = useDispatch();
 
   return useMutation({
-    mutationFn: BrandsManagementListAPI.UpdateBrands,
+    mutationFn: WatchesManagementListAPI.CreateWatches,
     onSuccess: () => {
-      dispatch(closePopup('Update Brand'));
-      queryClient.invalidateQueries({ queryKey: ['getBrandsList'] });
+      dispatch(closePopup('Create a new watch'));
+      queryClient.invalidateQueries({ queryKey: ['getWatchesList'] });
       notification.success({
-        message: 'Update successfully',
-        description: 'Update Brand successfully',
+        message: 'Create successfully',
+        description: 'Create a new watch successfully',
       });
     },
     onError: (error) => {
       notification.error({
-        message: 'Update failed',
+        message: 'Create failed',
         description: error.message,
       });
     },
   });
 };
 
-export default useUpdateBrand;
+export default useAddWatches;
