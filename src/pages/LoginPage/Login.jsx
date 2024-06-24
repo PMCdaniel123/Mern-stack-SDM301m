@@ -1,13 +1,13 @@
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Input } from 'antd';
-import { useNavigate } from 'react-router-dom';
-import './index.css';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { PATHS } from '@/constant/path';
 import { handleLogin } from '@/store/reducers/authReducer';
-import ConfigAntdButton from '@/components/Button/ConfigAntdButton';
 import { MESS } from '@/constant/validate';
 import { Controller, useForm } from 'react-hook-form';
+import ConfigAntdButton from '@/components/Button/ConfigAntdButton';
+import './index.css';
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -24,9 +24,13 @@ const Login = () => {
   const onSubmit = async (data) => {
     if (data && !loading.login) {
       try {
-        const res = await dispatch(handleLogin(data)).unwrap();
-        navigate(PATHS.HOME);
-        console.log('res', res);
+        const { role } = await dispatch(handleLogin(data)).unwrap();
+        if (role) {
+          navigate(PATHS.ADMIN.HOME);
+        } else {
+          navigate(PATHS.HOME);
+        }
+        console.log('role', role);
       } catch (error) {
         console.log('error', error);
       }
@@ -88,15 +92,16 @@ const Login = () => {
                 type="primary"
                 htmlType="submit"
                 className="login-form-button w-full font-semibold"
+                loading={loading.login}
               >
                 Login
               </Button>
             </ConfigAntdButton>
             <div className="text-center mt-2 text-white">
               Create an Account?{' '}
-              <a href="/register" className="text-gray-400">
+              <Link to="/register" className="text-gray-400">
                 Register
-              </a>
+              </Link>
             </div>
           </div>
         </form>

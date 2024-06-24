@@ -9,6 +9,8 @@ const initialState = {
     login: false,
     getProfile: false,
   },
+  token: tokenMethod.get()?.accessToken || null,
+  role: false,
 };
 
 export const authSlice = createSlice({
@@ -19,12 +21,16 @@ export const authSlice = createSlice({
       tokenMethod.remove();
       state.profile = null;
       message.success('Đăng xuất thành công');
+      state.token = null;
+      state.role = false;
     },
   },
   extraReducers: (builder) => {
     builder
-      .addCase(handleLogin.fulfilled, (state) => {
+      .addCase(handleLogin.fulfilled, (state, action) => {
         state.loading.login = false;
+        state.token = action.payload.token;
+        state.role = action.payload.role;
       })
       .addCase(handleLogin.pending, (state) => {
         state.loading.login = true;
@@ -58,14 +64,16 @@ export const handleLogin = createAsyncThunk(
   async (payload, thunkApi) => {
     try {
       const loginRes = await authService.login(payload);
-      const { token: accessToken, refreshToken } = loginRes || {};
+      console.log(loginRes);
+      const { token: accessToken, refreshToken, admin: role } = loginRes || {};
       tokenMethod.set({
         accessToken,
         refreshToken,
+        role,
       });
       // thunkApi.dispatch(handleGetProfile());
       message.success('Đăng nhập thành công');
-      return true;
+      return { role, token: accessToken };
     } catch (error) {
       const errorInfo = error?.response?.data;
       if (errorInfo.message === 'Not Found') {

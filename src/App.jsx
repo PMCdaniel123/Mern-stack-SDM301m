@@ -9,21 +9,20 @@ import MembersManagement from './pages/AccountsPage/MembersManagement';
 import WatchesManagement from './pages/WatchesPage/WatchesManagement';
 import MemberLayout from './layout/MemberLayout';
 import UserProfile from './pages/ProfilePage/Profile';
-import ProductCard from './components/ProductCard/ProductCard';
 import ProductPage from './pages/Product/ProductPage';
 
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={PATHS.LOGIN} element={<Login />} />
-        <Route path={PATHS.REGISTER} element={<Register />} />
-        <Route path={PATHS.HOME} element={<MemberLayout/>}>
-          <Route index element={'home page'} />
-          <Route path={PATHS.MEMBER.PROFILE} element={<UserProfile/>} />
-          <Route path={PATHS.MEMBER.HOME_PAGE} element={<ProductPage/>} />
-        </Route> 
-       
+        <Route path={PATHS.HOME} element={<MemberLayout />}>
+          <Route index element={<ProductPage />} />
+          <Route path={PATHS.LOGIN} element={<Login />} />
+          <Route path={PATHS.REGISTER} element={<Register />} />
+          <Route path={PATHS.MEMBER.PROFILE} element={<UserProfile />} />
+          <Route path={PATHS.MEMBER.HOME_PAGE} element={<ProductPage />} />
+        </Route>
+
         <Route element={<PrivateRoute redirectPath={PATHS.LOGIN} />}>
           <Route path={PATHS.HOME} element={<MainLayout />}>
             <Route path={PATHS.ADMIN.HOME} element={'Admin home page'} />
