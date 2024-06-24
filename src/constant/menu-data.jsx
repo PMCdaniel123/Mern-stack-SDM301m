@@ -37,6 +37,20 @@ export const MenuItems = [
     icon: <UserOutlined />,
   },
 ];
+export const NavigationItems = [
+  {
+    label: 'Home',
+    key: PATHS.MEMBER.HOME_PAGE,
+    icon: <HomeOutlined />,
+  },
+  {
+    label: 'Profile',
+    key: PATHS.MEMBER.PROFILE,
+    icon: <ShopOutlined />,
+  },
+
+];
+
 
 export const ViewBrandsOptionDropdown = (id, name) => [
   {
