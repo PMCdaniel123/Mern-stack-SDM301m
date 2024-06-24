@@ -1,18 +1,17 @@
-import { Button, Input } from 'antd'
-import { FilterOutlined, SearchOutlined } from '@ant-design/icons'
-import ConfigAntdButton from '../Button/ConfigAntdButton'
+import { Button, Input } from 'antd';
+import { FilterOutlined, SearchOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { setSearchValue } from '@/store/reducers/userReducer';
+import { setSearchValue } from '@/store/reducers/memberReducer';
+import ConfigAntdButton from '../Button/ConfigAntdButton';
 import debounce from 'debounce';
 
 export default function SearchBar() {
-
   const dispatch = useDispatch();
   const searchValue = useSelector((state) => state.member.searchValue);
 
   const handleSearch = debounce((searchValue) => {
-    dispatch(setSearchValue(searchValue))
-  }, 250)
+    dispatch(setSearchValue(searchValue));
+  }, 250);
 
   return (
     <div className="flex items-center space-x-3 w-96">
@@ -28,5 +27,5 @@ export default function SearchBar() {
         </Button>
       </ConfigAntdButton>
     </div>
-  )
+  );
 }

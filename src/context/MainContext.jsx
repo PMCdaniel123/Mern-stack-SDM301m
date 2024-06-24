@@ -16,7 +16,14 @@ export const MainContextProvider = ({ children }) => {
     });
   }, [pathname]);
 
-  return <MainContext.Provider>{children}</MainContext.Provider>;
+  const contextValue = {
+    // Add any state or functions you want to provide
+  };
+
+  return (
+    <MainContext.Provider value={contextValue}>{children}</MainContext.Provider>
+  );
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useMainContext = () => useContext(MainContext);
