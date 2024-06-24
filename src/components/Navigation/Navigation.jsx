@@ -13,7 +13,7 @@ const Navigation = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const token = useSelector((state) => state.auth.token);
-  console.log(token);
+  // console.log(token);
 
   const _onLogout = () => {
     dispatch(handleLogout());

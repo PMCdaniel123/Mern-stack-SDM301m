@@ -11,5 +11,6 @@ export const PATHS = {
   MEMBER: {
     HOME_PAGE: '/',
     PROFILE: '/profile',
+    DETAILS: '/watches/:id',
   },
 };

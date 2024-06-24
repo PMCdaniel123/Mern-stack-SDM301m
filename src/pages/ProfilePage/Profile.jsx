@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { Form, Input, Button, DatePicker, notification, Descriptions,Row, Col } from 'antd';
 import moment from 'moment';
-import useGetProfile from './useGetProfile';
+import  useGetMemberInfo  from './useGetProfile';
+
 
 const UserProfile = () => {
-  const {data} = useGetProfile();
-  console.log(data);
+  const { data } = useGetMemberInfo();
+  console.log('Profile Data:', data);
   const [editing, setEditing] = useState(false);
   const [profile, setProfile] = useState({
     memberName: 'JohnDoe123',

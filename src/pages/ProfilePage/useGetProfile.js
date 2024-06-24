@@ -1,13 +1,12 @@
 import MembersManagementListAPI from '@/services/membersService';
-import WatchesManagementListAPI from '@/services/watchesService';
 import { useQuery } from '@tanstack/react-query';
 
-const useGetProfile = () => {
+const useGetMemberInfor = () => {
     return useQuery({
         queryKey: ['getProfile'],
         queryFn: () =>
-           MembersManagementListAPI.GetMemberProfile()
+           MembersManagementListAPI.GetMemberInfo
     });
 };
 
-export default useGetProfile;
+export default useGetMemberInfor;
