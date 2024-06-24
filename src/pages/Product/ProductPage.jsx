@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Row, Col } from 'antd'; 
-
+import useGetWatchesList from './useGetProductList';
 
 const products = [
   {
@@ -33,16 +33,27 @@ const ProductCard = ({ product }) => (
 );
 
 // ProductPage component
-const ProductPage = () => (
-  <div style={{ padding: '20px' }}>
-    <Row gutter={[16, 16]}>
-      {products.map(product => (
-        <Col key={product.id} xs={24} sm={12} md={8} lg={6}>
-          <ProductCard product={product} />
-        </Col>
-      ))}
-    </Row>
-  </div>
-);
+const ProductPage = () => {
+  const { data } = useGetWatchesList();
+  console.log(data.map((item) => item.watchName));
+  console.log(data.map((item) => item.price));
+  console.log(data.map((item) => item.image));
+    console.log(data.map((item) => item._id));
+ 
+
+ 
+
+  return (
+    <div style={{ padding: '20px' }}>
+      <Row gutter={[16, 16]}>
+        {products.map(product => (
+          <Col key={product.id} xs={24} sm={12} md={8} lg={6}>
+            <ProductCard product={product} />
+          </Col>
+        ))}
+      </Row>
+    </div>
+  );
+};
 
 export default ProductPage;
