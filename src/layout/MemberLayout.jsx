@@ -1,8 +1,6 @@
-import Navigator from '@/components/AdminMenu/Menu';
 import Footer from '@/components/Footer/Footer';
 import Navigation from '@/components/Navigation/Navigation';
 // import BackToTop from '@/components/BackToTop/BackToTop';
-
 import { MainContextProvider } from '@/context/MainContext';
 import { Layout } from 'antd';
 import { Content } from 'antd/es/layout/layout';
@@ -15,7 +13,6 @@ const MemberLayout = () => {
         <Layout className="min-h-screen">
           <Navigation />
           <Layout>
-           
             <Content className="flex flex-col">
               <Outlet />
             </Content>

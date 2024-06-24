@@ -1,4 +1,4 @@
-import { GET_MEMBERS, GET_PROFILE } from '@/constant/environments';
+import { GET_MEMBER_INFO, GET_MEMBERS } from '@/constant/environments';
 import axiosInstance from '@/utils/axiosInstance';
 
 const GetMembersList = async () => {
@@ -10,9 +10,10 @@ const GetMembersList = async () => {
     throw new Error(errorResponse.response?.data.message);
   }
 };
-const GetMemberProfile = async () => {
+
+const GetMemberInfo = async () => {
   try {
-    const data = await axiosInstance.get(GET_PROFILE);
+    const data = await axiosInstance.get(GET_MEMBER_INFO);
     return data.profile;
   } catch (error) {
     const errorResponse = error;
@@ -22,7 +23,8 @@ const GetMemberProfile = async () => {
 
 const MembersManagementListAPI = {
   GetMembersList,
-  GetMemberProfile
+  GetMemberInfo,
+  
 };
 
 export default MembersManagementListAPI;

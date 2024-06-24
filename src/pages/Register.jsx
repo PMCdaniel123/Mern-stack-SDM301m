@@ -1,4 +1,3 @@
-import React from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { Button, Input } from 'antd';
 import {
@@ -7,6 +6,9 @@ import {
   FieldTimeOutlined,
   SkinOutlined,
 } from '@ant-design/icons';
+import { Link, useNavigate } from 'react-router-dom';
+import { PATHS } from '@/constant/path';
+import React from 'react';
 import ConfigAntdButton from '../components/Button/ConfigAntdButton';
 
 const Register = () => {
@@ -16,8 +18,11 @@ const Register = () => {
     formState: { errors },
   } = useForm();
 
+  const navigate = useNavigate();
+
   const onSubmit = (data) => {
     console.log(data);
+    navigate(PATHS.LOGIN);
   };
 
   return (
@@ -117,9 +122,9 @@ const Register = () => {
             </ConfigAntdButton>
             <div className="text-center mt-2 text-white">
               Already have an account?{' '}
-              <a href="/login" className="text-gray-400">
+              <Link to="/login" className="text-gray-400">
                 Login
-              </a>
+              </Link>
             </div>
           </div>
         </form>
