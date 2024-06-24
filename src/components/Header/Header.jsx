@@ -24,7 +24,7 @@ const Header = () => {
   const _onLogout = (e) => {
     e?.preventDefault();
     dispatch(handleLogout())
-    navigate(PATHS.LOGIN);
+    navigate(PATHS.HOME);
   };
 
   return (
