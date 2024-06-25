@@ -10,6 +10,7 @@ import WatchesManagement from './pages/WatchesPage/WatchesManagement';
 import MemberLayout from './layout/MemberLayout';
 import UserProfile from './pages/ProfilePage/Profile';
 import ProductPage from './pages/Product/ProductPage';
+import ProductDetail from './pages/ProductDetail/ProductDetail';
 
 const App = () => {
   return (
@@ -21,6 +22,10 @@ const App = () => {
           <Route path={PATHS.REGISTER} element={<Register />} />
           <Route path={PATHS.MEMBER.PROFILE} element={<UserProfile />} />
           <Route path={PATHS.MEMBER.HOME_PAGE} element={<ProductPage />} />
+          <Route
+            path={PATHS.MEMBER.HOME_PAGE + '/:watchId'}
+            element={<ProductDetail />}
+          />
         </Route>
 
         <Route element={<PrivateRoute redirectPath={PATHS.LOGIN} />}>

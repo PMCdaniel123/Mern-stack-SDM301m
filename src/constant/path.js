@@ -9,7 +9,7 @@ export const PATHS = {
     ACCOUNTS: '/admin/accounts',
   },
   MEMBER: {
-    HOME_PAGE: '/',
+    HOME_PAGE: '/watches',
     PROFILE: '/profile',
   },
 };
