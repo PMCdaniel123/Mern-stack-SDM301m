@@ -1,13 +1,13 @@
 import { Button, Input } from 'antd';
 import { FilterOutlined, SearchOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { setSearchValue } from '@/store/reducers/memberReducer';
+import { setSearchValue } from '@/store/reducers/watchReducer';
 import ConfigAntdButton from '../Button/ConfigAntdButton';
 import debounce from 'debounce';
 
-export default function SearchBar() {
+export default function WatchSearchBar() {
   const dispatch = useDispatch();
-  const searchValue = useSelector((state) => state.member.searchValue);
+  const searchValue = useSelector((state) => state.watch.searchValue);
 
   const handleSearch = debounce((searchValue) => {
     dispatch(setSearchValue(searchValue));
@@ -17,7 +17,7 @@ export default function SearchBar() {
     <div className="flex items-center space-x-3 w-96">
       <Input
         prefix={<SearchOutlined />}
-        placeholder="Search by..."
+        placeholder="Search by watch name..."
         onChange={(e) => handleSearch(e.target.value)}
         defaultValue={searchValue}
       />

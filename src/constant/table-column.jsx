@@ -58,6 +58,7 @@ export const WatchesColumn = [
     dataIndex: 'watchName',
     width: 300,
     key: 'watchName',
+    fixed: 'left',
   },
   {
     title: 'Image',
@@ -105,6 +106,7 @@ export const WatchesColumn = [
     title: 'Action',
     key: 'operation',
     width: 200,
+    fixed: 'right',
     align: 'center',
     render: (record) => {
       const items = ViewWatchesOptionDropdown(record._id, record.watchName);

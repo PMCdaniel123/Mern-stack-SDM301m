@@ -1,12 +1,12 @@
-import Logo from '@/assets/react.svg';
-import avatar from '@/assets/avatar.svg';
 import { Header as AntHeader } from 'antd/es/layout/layout';
-import { Avatar, Typography } from 'antd';
+import { Avatar, Button, Typography } from 'antd';
 import { PATHS } from '@/constant/path';
-import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { handleLogout } from '@/store/reducers/authReducer';
+import avatar from '@/assets/avatar.svg';
+import styled from 'styled-components';
+import ConfigAntdButton from '../Button/ConfigAntdButton';
 
 const LinkStyled = styled.a`
   color: #fff !important;
@@ -23,13 +23,17 @@ const Header = () => {
 
   const _onLogout = (e) => {
     e?.preventDefault();
-    dispatch(handleLogout())
+    dispatch(handleLogout());
     navigate(PATHS.HOME);
   };
 
   return (
     <AntHeader className="bg-black flex justify-between items-center">
-      <img src={Logo} alt="Logo" className="w-28" />
+      <img
+        src="https://static.vecteezy.com/system/resources/previews/003/189/903/large_2x/watch-classic-logo-icon-design-vector.jpg"
+        alt="Logo"
+        className="w-28"
+      />
       <div className="flex items-center gap-8">
         <div className="flex items-center gap-2">
           <Avatar
@@ -39,11 +43,11 @@ const Header = () => {
           />
           <div className="flex flex-col">
             <Typography.Text className="text-white">Admin</Typography.Text>
-            <Typography.Text>
-              <LinkStyled href="#" onClick={_onLogout}>
+            <ConfigAntdButton type="danger">
+              <Button type="primary" onClick={_onLogout}>
                 Log out
-              </LinkStyled>
-            </Typography.Text>
+              </Button>
+            </ConfigAntdButton>
           </div>
         </div>
       </div>

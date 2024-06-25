@@ -22,8 +22,10 @@ const App = () => {
           <Route path={PATHS.REGISTER} element={<Register />} />
           <Route path={PATHS.MEMBER.PROFILE} element={<UserProfile />} />
           <Route path={PATHS.MEMBER.HOME_PAGE} element={<ProductPage />} />
-          <Route path={PATHS.MEMBER.DETAILS} element={<ProductDetail />} />
-          
+          <Route
+            path={PATHS.MEMBER.HOME_PAGE + '/:watchId'}
+            element={<ProductDetail />}
+          />
         </Route>
 
         <Route element={<PrivateRoute redirectPath={PATHS.LOGIN} />}>

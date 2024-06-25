@@ -66,9 +66,14 @@ const DeleteWatches = async (id) => {
   }
 };
 
-const GetWatchesList = async () => {
+const GetWatchesList = async (value) => {
   try {
-    const data = await axiosInstance.get(GET_WATCHES);
+    let searchValue = '';
+
+    if (value && value.length > 0) {
+      searchValue = `/search?watchName=${value}`;
+    }
+    const data = await axiosInstance.get(GET_WATCHES + searchValue);
     return data.watches;
   } catch (error) {
     const errorResponse = error;
