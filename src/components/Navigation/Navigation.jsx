@@ -13,7 +13,6 @@ const Navigation = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const token = useSelector((state) => state.auth.token);
-  console.log(token);
 
   const _onLogout = () => {
     dispatch(handleLogout());
@@ -32,7 +31,7 @@ const Navigation = () => {
             'https://static.vecteezy.com/system/resources/previews/003/189/903/large_2x/watch-classic-logo-icon-design-vector.jpg'
           }
           alt="Logo"
-          className="w-12"
+          className="w-28"
         />
         <Menu
           onClick={({ key }) => navigate(key)}
