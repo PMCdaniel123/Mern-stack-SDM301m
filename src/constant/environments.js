@@ -20,3 +20,4 @@ export const GET_WATCHES_BY_ID = import.meta.env.VITE_GET_WATCHES_BY_ID_API;
 export const CREATE_WATCHES = import.meta.env.VITE_CREATE_WATCHES_API;
 export const UPDATE_WATCHES = import.meta.env.VITE_UPDATE_WATCHES_API;
 export const DELETE_WATCHES = import.meta.env.VITE_DELETE_WATCHES_API;
+export const ADD_COMMENT = import.meta.env.VITE_ADD_COMMENT_API;

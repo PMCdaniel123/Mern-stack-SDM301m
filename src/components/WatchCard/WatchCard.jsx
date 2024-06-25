@@ -2,6 +2,7 @@ import { PATHS } from '@/constant/path';
 import { Card, Tooltip, Typography } from 'antd';
 import { Link } from 'react-router-dom';
 
+
 const WatchCard = ({ watch }) => {
   return (
     <Card
@@ -13,10 +14,12 @@ const WatchCard = ({ watch }) => {
         <Tooltip placement="top" title={watch.watchName}>
           <Typography.Text>{watch.watchName}</Typography.Text>
         </Tooltip>
-      </Link>
+      
       <Card.Meta description={watch.watchDescription} />
       <p>{watch.price}</p>
+      </Link>
     </Card>
+    
   );
 };
 
