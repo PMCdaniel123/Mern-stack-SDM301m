@@ -5,7 +5,8 @@ import useGetProductById from './useGetProductDetail';
 
 const ProductDetailPage = () => {
     const { id } = useParams();
-    const {data} = useGetProductById(id);
+    const {data,isLoading} = useGetProductById(id);
+    if (isLoading) return <div>Loading...</div>;
     
     console.log(data);
     const product = data ? {

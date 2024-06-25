@@ -5,7 +5,8 @@ const useGetMemberInfor = () => {
     return useQuery({
         queryKey: ['getProfile'],
         queryFn: () =>
-           MembersManagementListAPI.GetMemberInfo
+           MembersManagementListAPI.GetMemberInfo()
+        
     });
 };
 

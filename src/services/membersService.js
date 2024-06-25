@@ -21,9 +21,20 @@ const GetMemberInfo = async () => {
   }
 };
 
+const UpdateMemberInfo = async () => {
+  try {
+    const data = await axiosInstance.put(UPDATE_PROFILE);
+    return data.profile;
+  } catch (error) {
+    const errorResponse = error;
+    throw new Error(errorResponse.response?.data.message);
+  }
+};
+
 const MembersManagementListAPI = {
   GetMembersList,
   GetMemberInfo,
+  UpdateMemberInfo
   
 };
 

@@ -19,7 +19,7 @@ const ProductPage = () => {
   if (isLoading) return <div>Loading...</div>;
 
   const products = data.map((item) => ({
-    id: item._id, // Assuming _id is unique
+    id: item._id, 
     name: item.watchName,
     description: item.watchDescription,
     price: item.price,

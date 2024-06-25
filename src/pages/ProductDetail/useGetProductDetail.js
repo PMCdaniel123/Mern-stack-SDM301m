@@ -5,7 +5,7 @@ const useGetProductById = () => {
     return useQuery({
         queryKey: ['getWatchesList'],
         queryFn: () =>
-            WatchesManagementListAPI.GetWatchById()
+            WatchesManagementListAPI.GetWatchById(id)
     });
 };
 
