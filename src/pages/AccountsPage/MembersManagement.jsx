@@ -1,5 +1,5 @@
 import { Table, Typography } from 'antd';
-import SearchBar from '@/components/SearchBar/Search-bar';
+import SearchBar from '@/components/SearchBar/Search-bar-watches';
 import { MembersColumn } from '@/constant/table-column';
 import useGetMembersList from './useGetMembersList';
 import { LoadingOutlined } from '@ant-design/icons';
@@ -18,9 +18,6 @@ const MembersManagement = () => {
         </Typography.Title>
       </div>
       <div className="flex flex-col gap-4 p-4">
-        <div className="flex justify-between items-center">
-          <SearchBar />
-        </div>
         <Table columns={MembersColumn} dataSource={onlyMembersData} />
       </div>
     </div>

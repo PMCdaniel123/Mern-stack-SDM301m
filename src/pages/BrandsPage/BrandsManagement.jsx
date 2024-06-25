@@ -2,7 +2,6 @@ import { PlusCircleOutlined } from '@ant-design/icons';
 import { Button, Table, Typography } from 'antd';
 import { BrandsColumn } from '@/constant/table-column';
 import useGetBrandsList from './useGetBrandsList';
-import SearchBar from '@/components/SearchBar/Search-bar';
 import ConfigAntdButton from '@/components/Button/ConfigAntdButton';
 import Popup from '@/components/Popup/Popup';
 import AddBrands from '@/features/AddBrands/AddBrands';
@@ -18,8 +17,7 @@ const BrandsManagement = () => {
         </Typography.Title>
       </div>
       <div className="flex flex-col gap-4 p-4">
-        <div className="flex justify-between items-center">
-          <SearchBar />
+        <div className="flex justify-end items-center">
           <div className="flex">
             <Popup title="Create a new brand" content={<AddBrands />}>
               <ConfigAntdButton>

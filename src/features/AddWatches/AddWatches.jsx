@@ -81,6 +81,11 @@ const AddWatches = () => {
               placeholder="Price..."
               {...register('price', {
                 required: MESS.ERROR_PRICE,
+                validate: {
+                  positive: (value) =>
+                    parseFloat(value) >= 0 || MESS.ERROR_PRICE_POSITIVE,
+                  number: (value) => !isNaN(value) || MESS.ERROR_PRICE_NUMBER,
+                },
               })}
             />
             {errors.price && (
