@@ -1,55 +1,61 @@
-import React, { useState } from 'react';
-import { Form, Input, Button, DatePicker, notification, Descriptions,Row, Col } from 'antd';
-import moment from 'moment';
+import React, { useEffect } from 'react';
+import { Descriptions } from 'antd';
+import useGetMemberInfor from './useGetProfile';
+import useUpdateProfile from './useUpdateProfile';
+import { useForm } from 'react-hook-form';
 
 const UserProfile = () => {
-  const [editing, setEditing] = useState(false);
-  const [profile, setProfile] = useState({
-    memberName: 'JohnDoe123',
-    name: 'John Doe',
-    yearOfBirth: 1990,
-  });
-
-  const handleEditToggle = () => {
-    setEditing(!editing);
+  const { data, isLoading } = useGetMemberInfor();
+  const updateProfile = useUpdateProfile();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => {
+    updateProfile.mutate({
+      name: data.name,
+      YOB: data.YOB,
+    });
   };
+  useEffect(() => {
+    if (data) {
+      reset({
+        name: data.name,
+        YOB: data.YOB,
+      });
+    }
+  }, [data, reset]);
 
-  const handleFormSubmit = (values) => {
-    console.log('Form Values:', values);
-    setEditing(false);
-  };
+    if (isLoading) return <div>Loading...</div>;
+  
+  
 
   return (
     <div className='p-10 m-6'>
-      {!editing ? (
-        <Descriptions title="User Profile" bordered column={1}>
-          <Descriptions.Item label="Member Name">{profile.memberName}</Descriptions.Item>
-          <Descriptions.Item label="Name">{profile.name}</Descriptions.Item>
-          <Descriptions.Item label="Year of Birth">{profile.yearOfBirth}</Descriptions.Item>
-        </Descriptions>
-      ) : (
-        <Form layout="vertical" onFinish={handleFormSubmit} initialValues={{...profile, yearOfBirth: moment(profile.yearOfBirth, 'YYYY')}}>
-          <Form.Item name="memberName" label="Member Name" rules={[{ required: true, message: 'Please input your member name!' }]}>
-            <Input />
-          </Form.Item>
-          <Form.Item name="name" label="Name" rules={[{ required: true, message: 'Please input your name!' }]}>
-            <Input />
-          </Form.Item>
-          <Form.Item name="yearOfBirth" label="Year of Birth" rules={[{ required: true, message: 'Please select your year of birth!' }]}>
-            <DatePicker picker="year" />
-          </Form.Item>
-          <Button type="primary" htmlType="submit">
-            Save Profile
-          </Button>
-        </Form>
-      )}
-      <Row justify="end" style={{ marginTop: '20px' }}>
-        <Col>
-          <Button type="primary" onClick={handleEditToggle}>
-            {editing ? 'Cancel' : 'Edit Profile'}
-          </Button>
-        </Col>
-      </Row>
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <Descriptions title="User Info" layout="vertical">
+        <Descriptions.Item label="Name">
+          <input
+            {...register('name', { required: true })}
+            className="border border-gray-300 rounded-md p-1"
+          />
+        </Descriptions.Item>
+        <Descriptions.Item label="Year of Birth">
+          <input
+            {...register('YOB', { required: true })}
+            className="border border-gray-300 rounded-md p-1"
+          />
+        </Descriptions.Item>
+      </Descriptions>
+      <button
+        type="submit"
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      >
+        Update
+      </button>
+    </form>
     </div>
   );
 };

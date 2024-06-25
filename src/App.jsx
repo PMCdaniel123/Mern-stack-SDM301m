@@ -40,6 +40,7 @@ const App = () => {
           </Route>
         </Route>
       </Routes>
+   
     </BrowserRouter>
   );
 };
