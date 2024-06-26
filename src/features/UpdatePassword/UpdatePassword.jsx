@@ -1,11 +1,22 @@
 import React, { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 import useUpdatePassword from './useUpdatePassword';
 import { Modal, Button, Input } from 'antd'; 
 import { EyeInvisibleFilled } from '@ant-design/icons';
 
+
+const schema = yup.object({
+  currentPassword: yup.string().required('Current password is required'),
+  newPassword: yup.string().min(8, 'Password must be at least 8 characters long').required('New password is required'),
+  confirmNewPassword: yup.string().oneOf([yup.ref('newPassword'), null], 'Passwords must match').required('Please confirm your new password'),
+}).required();
+
 const UpdatePassword = () => {
-  const { control, handleSubmit, formState: { errors }, watch } = useForm();
+  const { control, handleSubmit, formState: { errors }, watch } = useForm({
+    resolver: yupResolver(schema), 
+  });
   const updatePassword = useUpdatePassword();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [showCurrentPassword, setShowCurrentPassword] = useState(false);
@@ -38,6 +49,7 @@ const UpdatePassword = () => {
       </Button>
       <Modal title="Update Password" visible={isModalVisible} onOk={handleSubmit(handleOk)} onCancel={handleCancel}>
         <form onSubmit={handleSubmit(handleOk)}>
+       
           <div>
             <label htmlFor="currentPassword">Current Password:</label>
             <Controller
@@ -57,8 +69,9 @@ const UpdatePassword = () => {
                 />
               )}
             />
-            {errors.currentPassword && <p className='text-red-500'>Your current password is required</p>}
+            {errors.currentPassword && <p className='text-red-500'>{errors.currentPassword.message}</p>}
           </div>
+         
           <div>
             <label htmlFor="newPassword">New Password:</label>
             <Controller
@@ -78,19 +91,15 @@ const UpdatePassword = () => {
                 />
               )}
             />
-              {errors.newPassword && <p className='text-red-500'>Your new password is required</p>}
+            {errors.newPassword && <p className='text-red-500'>{errors.newPassword.message}</p>}
           </div>
+          
           <div>
             <label htmlFor="confirmNewPassword">Confirm New Password:</label>
             <Controller
               name="confirmNewPassword"
               control={control}
               defaultValue=""
-              rules={{
-                required: "Please confirm your new password",
-                validate: value =>
-                  value === newPassword || "The new password and confirm password do not match"
-              }}
               render={({ field }) => (
                 <Input
                   {...field}
@@ -104,7 +113,7 @@ const UpdatePassword = () => {
                 />
               )}
             />
-          {errors.confirmNewPassword && <p className='text-red-500'>{errors.confirmNewPassword.message}</p>}
+            {errors.confirmNewPassword && <p className='text-red-500'>{errors.confirmNewPassword.message}</p>}
           </div>
         </form>
       </Modal>
