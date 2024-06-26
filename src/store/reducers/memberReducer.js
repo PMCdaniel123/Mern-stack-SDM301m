@@ -2,7 +2,6 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = { searchValue: '' };
 
-// eslint-disable-next-line react-refresh/only-export-components
 const memberSlice = createSlice({
   name: 'member',
   initialState,

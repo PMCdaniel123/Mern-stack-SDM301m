@@ -4,9 +4,9 @@ import { PATHS } from '@/constant/path';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { handleLogout } from '@/store/reducers/authReducer';
-import avatar from '@/assets/avatar.svg';
 import styled from 'styled-components';
 import ConfigAntdButton from '../Button/ConfigAntdButton';
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
 
 const LinkStyled = styled.a`
   color: #fff !important;
@@ -29,17 +29,13 @@ const Header = () => {
 
   return (
     <AntHeader className="bg-black flex justify-between items-center">
-      <img
-        src="https://static.vecteezy.com/system/resources/previews/003/189/903/large_2x/watch-classic-logo-icon-design-vector.jpg"
-        alt="Logo"
-        className="w-28"
-      />
       <div className="flex items-center gap-8">
         <div className="flex items-center gap-2">
           <Avatar
-            src={avatar}
-            size={46}
-            className="border-white border-2 cursor-pointer"
+            src={<AccountBoxIcon />}
+            shape={square}
+            // size={46}
+            className="cursor-pointer"
           />
           <div className="flex flex-col">
             <Typography.Text className="text-white">Admin</Typography.Text>

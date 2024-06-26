@@ -20,7 +20,9 @@ const App = () => {
           <Route index element={<ProductPage />} />
           <Route path={PATHS.LOGIN} element={<Login />} />
           <Route path={PATHS.REGISTER} element={<Register />} />
-          <Route path={PATHS.MEMBER.PROFILE} element={<UserProfile />} />
+          <Route element={<PrivateRoute redirectPath={PATHS.LOGIN} />}>
+            <Route path={PATHS.MEMBER.PROFILE} element={<UserProfile />} />
+          </Route>
           <Route path={PATHS.MEMBER.HOME_PAGE} element={<ProductPage />} />
           <Route
             path={PATHS.MEMBER.WATCH_DETAILS}

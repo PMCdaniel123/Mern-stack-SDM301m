@@ -6,50 +6,51 @@ import { useDispatch, useSelector } from 'react-redux';
 import { handleLogout } from '@/store/reducers/authReducer';
 import { PATHS } from '@/constant/path';
 import React from 'react';
-import avatar from '@/assets/avatar.svg';
+import PersonSharpIcon from '@mui/icons-material/PersonSharp';
 import ConfigAntdButton from '../Button/ConfigAntdButton';
+import tokenMethod from '@/utils/token';
 
 const Navigation = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const token = useSelector((state) => state.auth.token);
+  const profile = useSelector((state) => state.auth.profile);
+  const { name } = profile || {};
 
-  const _onLogout = () => {
+  const _onLogout = (e) => {
+    e?.preventDefault();
     dispatch(handleLogout());
     navigate(PATHS.HOME);
   };
 
-  const login = () => {
+  const _onLogin = (e) => {
+    e?.preventDefault();
+    e?.stopPropagation();
     navigate(PATHS.LOGIN);
   };
 
   return (
     <AntHeader className="bg-white flex justify-between items-center px-10">
       <div className="flex items-center gap-8">
-        <img
-          src={
-            'https://static.vecteezy.com/system/resources/previews/003/189/903/large_2x/watch-classic-logo-icon-design-vector.jpg'
-          }
-          alt="Logo"
-          className="w-28"
-        />
         <Menu
           onClick={({ key }) => navigate(key)}
           className="bg-white duration-300"
           items={NavigationItems}
           mode="horizontal"
           selectable={false}
-        ></Menu>
+        />
       </div>
       {token ? (
         <div className="flex items-center gap-8">
           <Typography.Text className="text-black">
-            Welcome, user
+            Welcome {name}
           </Typography.Text>
           <div className="flex items-center gap-2">
             <Avatar
-              src={avatar}
-              size={46}
+              icon={
+                <PersonSharpIcon sx={{ color: 'black' }} fontSize="large" />
+              }
+              shape="square"
               className="border-white border-2 cursor-pointer"
             />
             <ConfigAntdButton type="danger">
@@ -62,7 +63,7 @@ const Navigation = () => {
       ) : (
         <div className="flex items-center gap-8">
           <ConfigAntdButton type="primary">
-            <Button type="primary" onClick={login}>
+            <Button type="primary" onClick={_onLogin}>
               Login
             </Button>
           </ConfigAntdButton>

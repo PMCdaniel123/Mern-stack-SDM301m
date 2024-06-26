@@ -22,9 +22,7 @@ export default function WatchSearchBar() {
         defaultValue={searchValue}
       />
       <ConfigAntdButton type="primary">
-        <Button type="primary" icon={<FilterOutlined />}>
-          Filter
-        </Button>
+        <Button type="primary">Search</Button>
       </ConfigAntdButton>
     </div>
   );

@@ -15,8 +15,6 @@ import UpdateWatch from '@/features/UpdateWatches/UpdateWatch';
 import DeleteComment from '@/features/DeleteComment/DeleteComent';
 import UpdateComment from '@/features/UpdateComment/UpdateComment';
 
-// Navigation Sider
-// eslint-disable-next-line react-refresh/only-export-components
 export const MenuItems = [
   {
     label: 'Home',
@@ -40,7 +38,6 @@ export const MenuItems = [
   },
 ];
 
-// eslint-disable-next-line react-refresh/only-export-components
 export const NavigationItems = [
   {
     label: 'Home',

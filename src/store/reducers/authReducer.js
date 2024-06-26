@@ -1,7 +1,7 @@
 import { authService } from '@/services/authService';
 import tokenMethod from '@/utils/token';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { message } from 'antd';
+import { message, notification } from 'antd';
 
 const initialState = {
   profile: null,
@@ -20,7 +20,10 @@ export const authSlice = createSlice({
     handleLogout: (state) => {
       tokenMethod.remove();
       state.profile = null;
-      message.success('Đăng xuất thành công');
+      notification.success({
+        message: 'Đăng xuất thành công',
+        placement: 'topRight',
+      });
       state.token = null;
       state.role = false;
     },
@@ -71,23 +74,15 @@ export const handleLogin = createAsyncThunk(
         refreshToken,
         role,
       });
-      // thunkApi.dispatch(handleGetProfile());
-      // message.success('Đăng nhập thành công');
-      toast.success('🦄 Wow so easy!', {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        transition: Bounce,
-        });
+      thunkApi.dispatch(handleGetProfile());
+      notification.success({
+        message: 'Đăng nhập thành công',
+        placement: 'topRight',
+      });
       return { role, token: accessToken };
     } catch (error) {
       const errorInfo = error?.response?.data;
-      if (errorInfo.message === 'Not Found') {
+      if (errorInfo.error === 'Not Found') {
         message.error('Username hoặc password không đúng');
       }
       return thunkApi.rejectWithValue(errorInfo);

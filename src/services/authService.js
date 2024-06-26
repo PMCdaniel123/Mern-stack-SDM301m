@@ -6,7 +6,7 @@ export const authService = {
     return axiosInstance.post(LOGIN, payload);
   },
   getProfile() {
-    return axiosInstance.get(`/users/profile`, {
+    return axiosInstance.get(`/members/profile`, {
       headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
     });
   },

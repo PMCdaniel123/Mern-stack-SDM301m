@@ -2,7 +2,6 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {};
 
-// eslint-disable-next-line react-refresh/only-export-components
 const popupSlice = createSlice({
   name: 'popup',
   initialState,
