@@ -1,7 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { PATHS } from './constant/path';
-import Login from './pages/LoginPage/Login';
-import Register from './pages/Register';
+import Login from './pages/AuthPage/Login';
 import MainLayout from './layout/MainLayout';
 import BrandsManagement from './pages/BrandsPage/BrandsManagement';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
@@ -11,6 +10,7 @@ import MemberLayout from './layout/MemberLayout';
 import UserProfile from './pages/ProfilePage/Profile';
 import ProductPage from './pages/Product/ProductPage';
 import ProductDetail from './pages/ProductDetail/ProductDetail';
+import Register from './pages/AuthPage/Register';
 
 const App = () => {
   return (

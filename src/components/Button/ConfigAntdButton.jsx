@@ -1,7 +1,7 @@
 import { ConfigProvider } from 'antd';
 import { TinyColor } from '@ctrl/tinycolor';
 
-const colors1 = ['#000', '#000'];
+const colors1 = ['#1677ff', '#1677ff'];
 const colors2 = ['#f83600', '#f83600'];
 
 const ConfigAntdButton = ({ children, type }) => {

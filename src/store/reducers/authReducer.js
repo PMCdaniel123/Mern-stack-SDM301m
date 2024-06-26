@@ -72,7 +72,18 @@ export const handleLogin = createAsyncThunk(
         role,
       });
       // thunkApi.dispatch(handleGetProfile());
-      message.success('Đăng nhập thành công');
+      // message.success('Đăng nhập thành công');
+      toast.success('🦄 Wow so easy!', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+        });
       return { role, token: accessToken };
     } catch (error) {
       const errorInfo = error?.response?.data;

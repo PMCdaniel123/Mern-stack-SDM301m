@@ -9,9 +9,9 @@ import {
 import { Link, useNavigate } from 'react-router-dom';
 import { PATHS } from '@/constant/path';
 import React from 'react';
-import ConfigAntdButton from '../components/Button/ConfigAntdButton';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import ConfigAntdButton from '@/components/Button/ConfigAntdButton';
 
 const schema = yup.object({
   name: yup.string().required('Name is required'),
@@ -34,7 +34,6 @@ const Register = () => {
   return (
     <div
       className="flex justify-center items-center min-h-screen bg-cover bg-center"
-      style={{ backgroundImage: "url('/watches.jpg')" }}
     >
       <div className="p-10 bg-gray-800 bg-opacity-60 rounded-lg shadow-lg w-full max-w-md">
         <h2 className="text-3xl font-bold text-center mb-5 text-white">

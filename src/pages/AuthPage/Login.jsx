@@ -6,8 +6,6 @@ import { PATHS } from '@/constant/path';
 import { handleLogin } from '@/store/reducers/authReducer';
 import { MESS } from '@/constant/validate';
 import { Controller, useForm } from 'react-hook-form';
-import ConfigAntdButton from '@/components/Button/ConfigAntdButton';
-import './index.css';
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -38,16 +36,14 @@ const Login = () => {
   };
 
   return (
-    <div
-      className="flex justify-center items-center min-h-screen bg-cover bg-center"
-      style={{ backgroundImage: "url('/watches.jpg')" }}
-    >
-      <div className="p-10 bg-gray-800 bg-opacity-60 rounded-lg shadow-lg w-full max-w-md">
-        <h2 className="text-3xl font-bold text-center mb-5 text-white">
+    <div className="flex justify-center items-center min-h-screen bg-cover bg-center">
+      <div className="p-10 bg-white bg-opacity-60 rounded-lg shadow-lg w-full max-w-md">
+        <h2 className="text-3xl font-bold text-center mb-5 text-black">
           LOGIN
         </h2>
         <form onSubmit={handleSubmit(onSubmit)} className="login-form">
           <div className="mb-4">
+            <label htmlFor="name">Member Name</label>
             <Controller
               name="membername"
               control={control}
@@ -56,6 +52,7 @@ const Login = () => {
               render={({ field }) => (
                 <Input
                   {...field}
+                  id="name"
                   prefix={<UserOutlined className="site-form-item-icon" />}
                   placeholder="Member name"
                   className="p-2"
@@ -67,6 +64,7 @@ const Login = () => {
             )}
           </div>
           <div className="mb-4">
+            <label htmlFor="pwd">Password</label>
             <Controller
               name="password"
               control={control}
@@ -76,6 +74,7 @@ const Login = () => {
                 <Input
                   {...field}
                   prefix={<LockOutlined className="site-form-item-icon" />}
+                  id="pwd"
                   type="password"
                   placeholder="Password"
                   className="p-2"
@@ -87,21 +86,17 @@ const Login = () => {
             )}
           </div>
           <div>
-            <ConfigAntdButton>
-              <Button
-                type="primary"
-                htmlType="submit"
-                className="login-form-button w-full font-semibold"
-                loading={loading.login}
-              >
-                Login
-              </Button>
-            </ConfigAntdButton>
-            <div className="text-center mt-2 text-white">
-              Create an Account?{' '}
-              <Link to="/register" className="text-gray-400">
-                Register
-              </Link>
+            <Button
+              type="primary"
+              htmlType="submit"
+              className="login-form-button w-full font-semibold h-10"
+              loading={loading.login}
+            >
+              Login
+            </Button>
+            <div className="text-center mt-2 text-black">
+              <span className="opacity-70 italic">Create an Account? </span>
+              <Link to="/register">Register</Link>
             </div>
           </div>
         </form>
