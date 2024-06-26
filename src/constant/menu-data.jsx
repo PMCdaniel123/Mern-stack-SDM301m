@@ -12,6 +12,8 @@ import DeleteBrand from '@/features/DeleteBrands/DeleteBrand';
 import UpdateBrand from '@/features/UpdateBrands/UpdateBrand';
 import DeleteWatch from '@/features/DeleteWatches/DeleteWatch';
 import UpdateWatch from '@/features/UpdateWatches/UpdateWatch';
+import DeleteComment from '@/features/DeleteComment/DeleteComent';
+import UpdateComment from '@/features/UpdateComment/UpdateComment';
 
 // Navigation Sider
 // eslint-disable-next-line react-refresh/only-export-components
@@ -37,6 +39,8 @@ export const MenuItems = [
     icon: <UserOutlined />,
   },
 ];
+
+// eslint-disable-next-line react-refresh/only-export-components
 export const NavigationItems = [
   {
     label: 'Home',
@@ -48,9 +52,7 @@ export const NavigationItems = [
     key: PATHS.MEMBER.PROFILE,
     icon: <ShopOutlined />,
   },
-
 ];
-
 
 export const ViewBrandsOptionDropdown = (id, name) => [
   {
@@ -87,6 +89,36 @@ export const ViewWatchesOptionDropdown = (id, name) => [
     label: (
       <Popup title="Delete Watch" content={<DeleteWatch id={id} name={name} />}>
         Delete Watch
+      </Popup>
+    ),
+    key: 'delete',
+    icon: <CloseCircleOutlined />,
+  },
+];
+
+export const ViewCommentsOptionDropdown = (id, rating, content) => [
+  {
+    label: (
+      <Popup
+        title="Update Comment"
+        content={
+          <UpdateComment
+            commentId={id}
+            initialRating={rating}
+            initialContent={content}
+          />
+        }
+      >
+        Update Comment
+      </Popup>
+    ),
+    key: 'edit',
+    icon: <EditOutlined />,
+  },
+  {
+    label: (
+      <Popup title="Delete Comment" content={<DeleteComment commentId={id} />}>
+        Delete Comment
       </Popup>
     ),
     key: 'delete',

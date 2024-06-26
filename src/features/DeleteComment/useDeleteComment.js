@@ -5,14 +5,14 @@ import { closePopup } from '@/store/reducers/popupReducer';
 import { queryClient } from '@/constant/storage';
 import MembersManagementListAPI from '@/services/membersService';
 
-
-export const useDeleteWatch = (id) => {
+export const useDeleteComment = ({ watchId, commentId }) => {
   const dispatch = useDispatch();
   return useMutation({
-    mutationFn: () => MembersManagementListAPI.DeleteComment(id),
+    mutationFn: () =>
+      MembersManagementListAPI.DeleteComment({ watchId, commentId }),
     onSuccess: () => {
       dispatch(closePopup('Delete Comment'));
-      queryClient.invalidateQueries({ queryKey: [''] });
+      queryClient.invalidateQueries({ queryKey: ['getWatchById'] });
       notification.success({
         message: 'Delete successfully',
         description: 'Delete comment successfully',

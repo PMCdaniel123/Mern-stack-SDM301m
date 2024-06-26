@@ -7,7 +7,7 @@ const useAddComment = () => {
   return useMutation({
     mutationFn: MembersManagementListAPI.AddComment,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['addComment'] });
+      queryClient.invalidateQueries({ queryKey: ['getWatchById'] });
       notification.success({
         message: 'Comment successfully',
         description: 'Post a new comment successfully',
