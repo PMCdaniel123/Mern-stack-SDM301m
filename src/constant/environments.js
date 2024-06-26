@@ -13,6 +13,7 @@ export const DELETE_BRANDS = import.meta.env.VITE_DELETE_BRANDS_API;
 export const GET_MEMBERS = import.meta.env.VITE_GET_MEMBERS_LIST_API;
 export const GET_MEMBER_INFO = import.meta.env.VITE_GET_MEMBER_INFO_API;
 export const UPDATE_PROFILE = import.meta.env.VITE_UPDATE_PROFILE_API;
+export const UPDATE_PASSWORD = import.meta.env.VITE_UPDATE_PASSWORD_API;
 
 // Watch API
 export const GET_WATCHES = import.meta.env.VITE_GET_WATCHES_LIST_API;

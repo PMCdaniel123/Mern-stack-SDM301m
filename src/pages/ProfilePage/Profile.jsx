@@ -3,6 +3,7 @@ import { Descriptions } from 'antd';
 import useGetMemberInfor from './useGetProfile';
 import useUpdateProfile from './useUpdateProfile';
 import { useForm } from 'react-hook-form';
+import UpdatePassword from '@/features/UpdatePassword/UpdatePassword';
 
 const UserProfile = () => {
   const { data, isLoading } = useGetMemberInfor();
@@ -58,6 +59,7 @@ const UserProfile = () => {
           Update
         </button>
       </form>
+      <UpdatePassword />
     </div>
   );
 };
