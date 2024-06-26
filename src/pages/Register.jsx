@@ -10,13 +10,19 @@ import { Link, useNavigate } from 'react-router-dom';
 import { PATHS } from '@/constant/path';
 import React from 'react';
 import ConfigAntdButton from '../components/Button/ConfigAntdButton';
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
 
+const schema = yup.object({
+  name: yup.string().required('Name is required'),
+  YOB: yup.number().typeError('Year of birth must be a number').required('Year of birth is required').min(1964, 'You must be above 15 years old to register'),
+}).required();
 const Register = () => {
   const {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm({resolver: yupResolver(schema),});
 
   const navigate = useNavigate();
 
