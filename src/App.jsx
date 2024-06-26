@@ -23,7 +23,7 @@ const App = () => {
           <Route path={PATHS.MEMBER.PROFILE} element={<UserProfile />} />
           <Route path={PATHS.MEMBER.HOME_PAGE} element={<ProductPage />} />
           <Route
-            path={PATHS.MEMBER.HOME_PAGE + '/:watchId'}
+            path={PATHS.MEMBER.WATCH_DETAILS}
             element={<ProductDetail />}
           />
         </Route>
@@ -40,7 +40,6 @@ const App = () => {
           </Route>
         </Route>
       </Routes>
-   
     </BrowserRouter>
   );
 };

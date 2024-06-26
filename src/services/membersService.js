@@ -1,4 +1,8 @@
-import { UPDATE_PROFILE, GET_MEMBER_INFO, GET_MEMBERS } from '@/constant/environments';
+import {
+  UPDATE_PROFILE,
+  GET_MEMBER_INFO,
+  GET_MEMBERS,
+} from '@/constant/environments';
 import axiosInstance from '@/utils/axiosInstance';
 
 const GetMembersList = async () => {
@@ -31,11 +35,7 @@ const UpdateMemberInfo = async () => {
   }
 };
 
-const AddComment = async ({
-  watchId,
-  rating,
-  content,
-}) => {
+const AddComment = async ({ watchId, rating, content }) => {
   try {
     const data = await axiosInstance.post(`/watches/${watchId}/comment`, {
       rating,
@@ -48,9 +48,27 @@ const AddComment = async ({
   }
 };
 
-const DeleteComment = async (id) => {
+const DeleteComment = async ({ watchId, commentId }) => {
   try {
-    const data = await axiosInstance.delete(`/watches/${watchId}/comment/${id}}`);
+    const data = await axiosInstance.delete(
+      `/watches/${watchId}/comment/${commentId}`,
+    );
+    return data;
+  } catch (error) {
+    const errorResponse = error;
+    throw new Error(errorResponse.response?.data.message);
+  }
+};
+
+const UpdateComment = async ({ watchId, commentId, rating, content }) => {
+  try {
+    const data = await axiosInstance.put(
+      `/watches/${watchId}/comment/${commentId}`,
+      {
+        rating,
+        content,
+      },
+    );
     return data;
   } catch (error) {
     const errorResponse = error;
@@ -63,8 +81,8 @@ const MembersManagementListAPI = {
   GetMemberInfo,
   UpdateMemberInfo,
   AddComment,
-  DeleteComment
-  
+  DeleteComment,
+  UpdateComment,
 };
 
 export default MembersManagementListAPI;

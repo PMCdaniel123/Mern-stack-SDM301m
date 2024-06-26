@@ -1,13 +1,14 @@
 import MembersManagementListAPI from '@/services/membersService';
 import { useQuery } from '@tanstack/react-query';
+import { useSelector } from 'react-redux';
 
 const useGetMemberInfor = () => {
-    return useQuery({
-        queryKey: ['getProfile'],
-        queryFn: () =>
-           MembersManagementListAPI.GetMemberInfo()
-        
-    });
+  const token = useSelector((state) => state.auth.token);
+  return useQuery({
+    queryKey: ['getProfile', token],
+    queryFn: () => MembersManagementListAPI.GetMemberInfo(),
+    enabled: !!token,
+  });
 };
 
 export default useGetMemberInfor;

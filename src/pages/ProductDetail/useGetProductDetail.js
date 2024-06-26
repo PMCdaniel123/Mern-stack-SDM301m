@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 
 const useGetProductById = () => {
     return useQuery({
-        queryKey: ['getWatchesList'],
+        queryKey: ['getWatchesInfo'],
         queryFn: () =>
             WatchesManagementListAPI.GetWatchById(id)
     });

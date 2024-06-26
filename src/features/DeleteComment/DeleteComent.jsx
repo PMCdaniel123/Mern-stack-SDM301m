@@ -1,19 +1,21 @@
 import { Button, Typography } from 'antd';
 import { useDispatch } from 'react-redux';
 import { closePopup } from '@/store/reducers/popupReducer';
-import { useDeleteWatch } from './useDeleteWatch';
 import ConfigAntdButton from '@/components/Button/ConfigAntdButton';
+import { useParams } from 'react-router-dom';
+import { useDeleteComment } from './useDeleteComment';
 
-const DeleteComment = ({ id }) => {
+const DeleteComment = ({ commentId }) => {
+  const { watchId } = useParams();
   const dispatch = useDispatch();
-  const deleteWatch = useDeleteWatch(id);
+  const deleteComment = useDeleteComment({ watchId, commentId });
 
   const handleCancel = () => {
-    dispatch(closePopup('Delete Brand'));
+    dispatch(closePopup('Delete Comment'));
   };
 
   const handleDelete = () => {
-    deleteWatch.mutate();
+    deleteComment.mutate();
   };
 
   return (
