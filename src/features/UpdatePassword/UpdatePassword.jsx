@@ -44,7 +44,6 @@ const UpdatePassword = () => {
               name="currentPassword"
               control={control}
               defaultValue=""
-              rules={{ required: "Your current password is required" }}
               render={({ field }) => (
                 <Input
                   {...field}
@@ -58,7 +57,7 @@ const UpdatePassword = () => {
                 />
               )}
             />
-            {errors.currentPassword && <p>{errors.currentPassword.message}</p>}
+            {errors.currentPassword && <p className='text-red-500'>Your current password is required</p>}
           </div>
           <div>
             <label htmlFor="newPassword">New Password:</label>
@@ -66,7 +65,6 @@ const UpdatePassword = () => {
               name="newPassword"
               control={control}
               defaultValue=""
-              rules={{ required: "Your new password is required" }}
               render={({ field }) => (
                 <Input
                   {...field}
@@ -80,7 +78,7 @@ const UpdatePassword = () => {
                 />
               )}
             />
-            {errors.newPassword && <p>{errors.newPassword.message}</p>}
+              {errors.newPassword && <p className='text-red-500'>Your new password is required</p>}
           </div>
           <div>
             <label htmlFor="confirmNewPassword">Confirm New Password:</label>
@@ -106,7 +104,7 @@ const UpdatePassword = () => {
                 />
               )}
             />
-            {errors.confirmNewPassword && <p>{errors.confirmNewPassword.message}</p>}
+          {errors.confirmNewPassword && <p className='text-red-500'>{errors.confirmNewPassword.message}</p>}
           </div>
         </form>
       </Modal>
