@@ -1,7 +1,8 @@
 // ref: https://vitejs.dev/guide/env-and-mode.html
 export const BASE_URL = import.meta.env.VITE_BASE_URL;
 export const ENV = import.meta.env.VITE_ENV;
-export const LOGIN = import.meta.env.VITE_LOGIN_ADMIN_API;
+export const LOGIN = import.meta.env.VITE_LOGIN_API;
+export const REGISTER = import.meta.env.VITE_REGISTER_API;
 
 // Counter API
 export const GET_BRANDS = import.meta.env.VITE_GET_BRANDS_LIST_API;

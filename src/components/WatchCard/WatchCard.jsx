@@ -7,7 +7,6 @@ const WatchCard = ({ watch }) => {
     <Link to={PATHS.MEMBER.HOME_PAGE + '/' + watch._id}>
       <Card
         hoverable
-        style={{ width: 240, margin: '10px' }}
         cover={<img alt={watch.watchName} src={watch.image} />}
       >
         <Tooltip placement="top" title={watch.watchName}>

@@ -6,6 +6,8 @@ import { PATHS } from '@/constant/path';
 import { handleLogin } from '@/store/reducers/authReducer';
 import { MESS } from '@/constant/validate';
 import { Controller, useForm } from 'react-hook-form';
+import useDebounce from '@/hooks/useDebounce';
+import ComponentLoading from '@/components/ComponentLoading/ComponentLoading';
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -35,6 +37,8 @@ const Login = () => {
     }
   };
 
+  const apiLoading = useDebounce(loading.login, 300);
+
   return (
     <div className="flex justify-center items-center min-h-screen bg-cover bg-center">
       <div className="p-10 bg-white bg-opacity-60 rounded-lg shadow-lg w-full max-w-md">
@@ -42,8 +46,11 @@ const Login = () => {
           LOGIN
         </h2>
         <form onSubmit={handleSubmit(onSubmit)} className="login-form">
+          {apiLoading && <ComponentLoading />}
           <div className="mb-4">
-            <label htmlFor="name">Member Name</label>
+            <label htmlFor="name" className="text-base">
+              Member Name
+            </label>
             <Controller
               name="membername"
               control={control}
@@ -54,8 +61,8 @@ const Login = () => {
                   {...field}
                   id="name"
                   prefix={<UserOutlined className="site-form-item-icon" />}
-                  placeholder="Member name"
-                  className="p-2"
+                  placeholder="Enter Member name"
+                  className="p-3 bg-gray-100"
                 />
               )}
             />
@@ -64,7 +71,9 @@ const Login = () => {
             )}
           </div>
           <div className="mb-4">
-            <label htmlFor="pwd">Password</label>
+            <label htmlFor="pwd" className="text-base">
+              Password
+            </label>
             <Controller
               name="password"
               control={control}
@@ -76,8 +85,8 @@ const Login = () => {
                   prefix={<LockOutlined className="site-form-item-icon" />}
                   id="pwd"
                   type="password"
-                  placeholder="Password"
-                  className="p-2"
+                  placeholder="Enter Password"
+                  className="p-3 bg-gray-100"
                 />
               )}
             />
@@ -92,7 +101,7 @@ const Login = () => {
               className="login-form-button w-full font-semibold h-10"
               loading={loading.login}
             >
-              Login
+              LOGIN
             </Button>
             <div className="text-center mt-2 text-black">
               <span className="opacity-70 italic">Create an Account? </span>

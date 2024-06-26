@@ -33,7 +33,7 @@ const Header = () => {
         <div className="flex items-center gap-2">
           <Avatar
             src={<AccountBoxIcon />}
-            shape={square}
+            shape={"square"}
             // size={46}
             className="cursor-pointer"
           />

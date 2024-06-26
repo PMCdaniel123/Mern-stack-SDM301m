@@ -5,6 +5,8 @@ export const MESS = {
   ERROR_EXISTED_BRAND_NAME: 'Brand name is existed.',
   ERROR_MEMBERNAME: 'Please enter member name.',
   ERROR_PASSWORD: 'Please enter password.',
+  ERROR_FULLNAME: 'Please enter full name.',
+  ERROR_YOB: 'Please enter year of birth.',
   ERROR_WATCH_NAME: 'Please enter member name.',
   ERROR_IMAGE_URL: 'Please enter image URL.',
   ERROR_PRICE: 'Please enter price.',

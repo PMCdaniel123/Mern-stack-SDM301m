@@ -15,6 +15,7 @@ const schema = yup.object({
 
 const UserProfile = () => {
   const { data, isLoading } = useGetMemberInfor();
+  console.log(data);
   const updateProfile = useUpdateProfile();
 
   const {
