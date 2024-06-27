@@ -1,12 +1,11 @@
 import { closePopup } from '@/store/reducers/popupReducer';
 import { Button, Rate } from 'antd';
 import { useDispatch } from 'react-redux';
-import { useEffect, useState } from 'react';
-import { Form, useParams } from 'react-router-dom';
-import { Input } from 'postcss';
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 import useUpdateComment from './useUpdateComment';
 import ConfigAntdButton from '@/components/Button/ConfigAntdButton';
-import { useForm } from 'react-hook-form';
 
 const UpdateComment = ({ commentId, initialRating, initialContent }) => {
   const dispatch = useDispatch();
@@ -49,9 +48,11 @@ const UpdateComment = ({ commentId, initialRating, initialContent }) => {
 
   return (
     <div className="p-2">
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="flex m-4">
-          <h1 className="w-1/4 flex font-bold items-center mr-4">Rating</h1>
+      <form onSubmit={handleSubmit(onSubmit)} className="px-6 py-4">
+        <div className="flex mb-4">
+          <h1 className="w-1/4 font-bold items-center mr-4 text-gray-700">
+            Rating
+          </h1>
           <div className="w-3/4">
             <Rate
               count={3}
@@ -60,13 +61,16 @@ const UpdateComment = ({ commentId, initialRating, initialContent }) => {
             />
           </div>
         </div>
-        <div className="flex m-4">
-          <h1 className="w-1/4 flex font-bold items-center mr-4">Content</h1>
+        <div className="flex mb-4">
+          <h1 className="w-1/4 font-bold items-center mr-4 text-gray-700">
+            Content
+          </h1>
           <div className="w-3/4">
             <textarea
               rows={4}
               value={content}
               placeholder="Write your review here"
+              className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               {...register('content', {
                 required: 'Write your review',
               })}
@@ -79,7 +83,7 @@ const UpdateComment = ({ commentId, initialRating, initialContent }) => {
           </div>
         </div>
 
-        <div className="flex flex-row gap-1 justify-center p-4">
+        <div className="flex justify-center gap-2 p-4">
           <ConfigAntdButton type="danger">
             <Button type="primary" onClick={handleCancel}>
               Cancel

@@ -7,30 +7,33 @@ import {
   SkinOutlined,
 } from '@ant-design/icons';
 import { Link, useNavigate } from 'react-router-dom';
-import { PATHS } from '@/constant/path';
+import { validatePassword } from '@/constant/validate';
 import React from 'react';
-import ConfigAntdButton from '../components/Button/ConfigAntdButton';
+import ConfigAntdButton from '../../components/Button/ConfigAntdButton';
+import useRegister from './useRegister';
 
 const Register = () => {
+  const register = useRegister();
+
   const {
     control,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const navigate = useNavigate();
-
   const onSubmit = (data) => {
     console.log(data);
-    navigate(PATHS.LOGIN);
+    register.mutate({
+      membername: data.membername,
+      password: data.password,
+      name: data.name,
+      YOB: data.YOB,
+    });
   };
 
   return (
-    <div
-      className="flex justify-center items-center min-h-screen bg-cover bg-center"
-      style={{ backgroundImage: "url('/watches.jpg')" }}
-    >
-      <div className="p-10 bg-gray-800 bg-opacity-60 rounded-lg shadow-lg w-full max-w-md">
+    <div className="bg-gray-300 flex justify-center items-center min-h-screen bg-cover bg-center">
+      <div className="p-10 bg-gray-900 bg-opacity-80 rounded-lg shadow-lg w-full max-w-md">
         <h2 className="text-3xl font-bold text-center mb-5 text-white">
           REGISTER
         </h2>
@@ -59,7 +62,10 @@ const Register = () => {
               name="password"
               control={control}
               defaultValue=""
-              rules={{ required: 'Password is required' }}
+              rules={{
+                required: 'Password is required',
+                validate: validatePassword,
+              }}
               render={({ field }) => (
                 <Input
                   {...field}
@@ -98,7 +104,12 @@ const Register = () => {
               name="YOB"
               control={control}
               defaultValue=""
-              rules={{ required: 'Year of birth is required' }}
+              rules={{
+                required: 'Year of birth is required',
+                validate: (value) =>
+                  (value >= 1964 && value <= 2009) ||
+                  'Year of birth must be between 1964 and 2009',
+              }}
               render={({ field }) => (
                 <Input
                   {...field}
@@ -123,7 +134,7 @@ const Register = () => {
             <div className="text-center mt-2 text-white">
               Already have an account?{' '}
               <Link to="/login" className="text-gray-400">
-                Login
+                LOGIN
               </Link>
             </div>
           </div>

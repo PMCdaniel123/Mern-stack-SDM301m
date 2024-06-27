@@ -12,3 +12,12 @@ export const MESS = {
   ERROR_PRICE_NUMBER: 'Price must be a number',
   ERROR_BRAND_NAME_OPTION: 'Please choose brand name.',
 };
+
+export const validatePassword = (password) => {
+  const passwordRegex =
+    /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+[\]{};':"\\|,.<>/?]).{6,}$/;
+  return (
+    passwordRegex.test(password) ||
+    'Password must be at least 6 characters long and include a number, a letter, and a special character'
+  );
+};

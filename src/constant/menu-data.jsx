@@ -2,11 +2,14 @@ import {
   CloseCircleOutlined,
   EditOutlined,
   HomeOutlined,
+  LockOutlined,
   ProductOutlined,
+  ProfileOutlined,
   ShopOutlined,
   UserOutlined,
 } from '@ant-design/icons';
 import { PATHS } from './path';
+import { Link } from 'react-router-dom';
 import Popup from '@/components/Popup/Popup';
 import DeleteBrand from '@/features/DeleteBrands/DeleteBrand';
 import UpdateBrand from '@/features/UpdateBrands/UpdateBrand';
@@ -44,7 +47,7 @@ export const MenuItems = [
 export const NavigationItems = [
   {
     label: 'Home',
-    key: PATHS.MEMBER.HOME_PAGE,
+    key: PATHS.HOME,
     icon: <HomeOutlined />,
   },
   {
@@ -125,3 +128,4 @@ export const ViewCommentsOptionDropdown = (id, rating, content) => [
     icon: <CloseCircleOutlined />,
   },
 ];
+

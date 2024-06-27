@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { PATHS } from './constant/path';
 import Login from './pages/LoginPage/Login';
-import Register from './pages/Register';
+import Register from './pages/RegisterPage/Register';
 import MainLayout from './layout/MainLayout';
 import BrandsManagement from './pages/BrandsPage/BrandsManagement';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
@@ -21,7 +21,6 @@ const App = () => {
           <Route path={PATHS.LOGIN} element={<Login />} />
           <Route path={PATHS.REGISTER} element={<Register />} />
           <Route path={PATHS.MEMBER.PROFILE} element={<UserProfile />} />
-          <Route path={PATHS.MEMBER.HOME_PAGE} element={<ProductPage />} />
           <Route
             path={PATHS.MEMBER.WATCH_DETAILS}
             element={<ProductDetail />}

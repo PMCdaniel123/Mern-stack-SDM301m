@@ -38,11 +38,8 @@ const Login = () => {
   };
 
   return (
-    <div
-      className="flex justify-center items-center min-h-screen bg-cover bg-center"
-      style={{ backgroundImage: "url('/watches.jpg')" }}
-    >
-      <div className="p-10 bg-gray-800 bg-opacity-60 rounded-lg shadow-lg w-full max-w-md">
+    <div className="bg-gray-300 flex justify-center items-center min-h-screen bg-cover bg-center">
+      <div className="p-10 bg-gray-900 bg-opacity-80 rounded-lg shadow-lg w-full max-w-md">
         <h2 className="text-3xl font-bold text-center mb-5 text-white">
           LOGIN
         </h2>
@@ -100,7 +97,7 @@ const Login = () => {
             <div className="text-center mt-2 text-white">
               Create an Account?{' '}
               <Link to="/register" className="text-gray-400">
-                Register
+                REGISTER
               </Link>
             </div>
           </div>

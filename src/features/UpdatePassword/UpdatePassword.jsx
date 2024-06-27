@@ -1,114 +1,128 @@
-import React, { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
+import { Button, Input } from 'antd';
+import { useDispatch } from 'react-redux';
+import { closePopup } from '@/store/reducers/popupReducer';
+import { validatePassword } from '@/constant/validate';
+import React from 'react';
 import useUpdatePassword from './useUpdatePassword';
-import { Modal, Button, Input } from 'antd'; 
-import { EyeInvisibleFilled } from '@ant-design/icons';
+import ConfigAntdButton from '@/components/Button/ConfigAntdButton';
 
 const UpdatePassword = () => {
-  const { control, handleSubmit, formState: { errors }, watch } = useForm();
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+    watch,
+    reset,
+  } = useForm();
   const updatePassword = useUpdatePassword();
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const [showCurrentPassword, setShowCurrentPassword] = useState(false);
-  const [showNewPassword, setShowNewPassword] = useState(false);
-  const [showConfirmNewPassword, setShowConfirmNewPassword] = useState(false);
 
-  const showModal = () => {
-    setIsModalVisible(true);
-  };
-
-  const handleOk = (data) => {
-    updatePassword.mutate({ 
+  const onSubmit = (data) => {
+    updatePassword.mutate({
       currentPassword: data.currentPassword,
       newPassword: data.newPassword,
-      confirmNewPassword: data.confirmNewPassword
+      confirmNewPassword: data.confirmNewPassword,
     });
-    setIsModalVisible(false);
   };
 
+  const dispatch = useDispatch();
+
   const handleCancel = () => {
-    setIsModalVisible(false);
+    reset();
+    dispatch(closePopup('Update Password'));
   };
 
   const newPassword = watch('newPassword');
 
   return (
-    <>
-      <Button type="primary" onClick={showModal}>
-        Update Password
-      </Button>
-      <Modal title="Update Password" visible={isModalVisible} onOk={handleSubmit(handleOk)} onCancel={handleCancel}>
-        <form onSubmit={handleSubmit(handleOk)}>
-          <div>
-            <label htmlFor="currentPassword">Current Password:</label>
-            <Controller
-              name="currentPassword"
-              control={control}
-              defaultValue=""
-              render={({ field }) => (
-                <Input
-                  {...field}
-                  id="currentPassword"
-                  type={showCurrentPassword ? 'text' : 'password'}
-                  suffix={
-                    <EyeInvisibleFilled
-                      onClick={() => setShowCurrentPassword(!showCurrentPassword)}
-                    />
-                  }
-                />
-              )}
-            />
-            {errors.currentPassword && <p className='text-red-500'>Your current password is required</p>}
-          </div>
-          <div>
-            <label htmlFor="newPassword">New Password:</label>
-            <Controller
-              name="newPassword"
-              control={control}
-              defaultValue=""
-              render={({ field }) => (
-                <Input
-                  {...field}
-                  id="newPassword"
-                  type={showNewPassword ? 'text' : 'password'}
-                  suffix={
-                    <EyeInvisibleFilled
-                      onClick={() => setShowNewPassword(!showNewPassword)}
-                    />
-                  }
-                />
-              )}
-            />
-              {errors.newPassword && <p className='text-red-500'>Your new password is required</p>}
-          </div>
-          <div>
-            <label htmlFor="confirmNewPassword">Confirm New Password:</label>
-            <Controller
-              name="confirmNewPassword"
-              control={control}
-              defaultValue=""
-              rules={{
-                required: "Please confirm your new password",
-                validate: value =>
-                  value === newPassword || "The new password and confirm password do not match"
-              }}
-              render={({ field }) => (
-                <Input
-                  {...field}
-                  id="confirmNewPassword"
-                  type={showConfirmNewPassword ? 'text' : 'password'}
-                  suffix={
-                    <EyeInvisibleFilled
-                      onClick={() => setShowConfirmNewPassword(!showConfirmNewPassword)}
-                    />
-                  }
-                />
-              )}
-            />
-          {errors.confirmNewPassword && <p className='text-red-500'>{errors.confirmNewPassword.message}</p>}
-          </div>
-        </form>
-      </Modal>
-    </>
+    <div className="px-6 py-4">
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="m-4">
+          <label htmlFor="currentPassword">Current password</label>
+          <Controller
+            name="currentPassword"
+            control={control}
+            defaultValue=""
+            rules={{
+              required: 'Current password is required',
+            }}
+            render={({ field }) => (
+              <Input
+                {...field}
+                className="p-2"
+                id="currentPassword"
+                type="password"
+                placeholder="Current password..."
+              />
+            )}
+          />
+          {errors.currentPassword && (
+            <p className="text-red-500">{errors.currentPassword.message}</p>
+          )}
+        </div>
+        <div className="m-4">
+          <label htmlFor="newPassword">New password</label>
+          <Controller
+            name="newPassword"
+            control={control}
+            defaultValue=""
+            rules={{
+              required: 'Password is required',
+              validate: validatePassword,
+            }}
+            render={({ field }) => (
+              <Input
+                {...field}
+                className="p-2"
+                id="newPassword"
+                type="password"
+                placeholder="New password..."
+              />
+            )}
+          />
+          {errors.newPassword && (
+            <p className="text-red-500">{errors.newPassword.message}</p>
+          )}
+        </div>
+        <div className="m-4">
+          <label htmlFor="confirmNewPassword">Confirm new password</label>
+          <Controller
+            name="confirmNewPassword"
+            control={control}
+            defaultValue=""
+            rules={{
+              required: 'Please confirm your new password',
+              validate: (value) =>
+                value === newPassword || 'Confirm password do not match',
+            }}
+            render={({ field }) => (
+              <Input
+                {...field}
+                className="p-2"
+                id="confirmNewPassword"
+                type="password"
+                placeholder="Confirm new password..."
+              />
+            )}
+          />
+          {errors.confirmNewPassword && (
+            <p className="text-red-500">{errors.confirmNewPassword.message}</p>
+          )}
+        </div>
+        <div className="flex flex-row gap-1 justify-center p-4">
+          <ConfigAntdButton type="danger">
+            <Button type="primary" onClick={handleCancel}>
+              Cancel
+            </Button>
+          </ConfigAntdButton>
+          <ConfigAntdButton>
+            <Button type="primary" onClick={handleSubmit(onSubmit)}>
+              Update
+            </Button>
+          </ConfigAntdButton>
+        </div>
+      </form>
+    </div>
   );
 };
 

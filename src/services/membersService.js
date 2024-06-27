@@ -2,7 +2,8 @@ import {
   UPDATE_PROFILE,
   GET_MEMBER_INFO,
   GET_MEMBERS,
-  UPDATE_PASSWORD
+  UPDATE_PASSWORD,
+  REGISTER,
 } from '@/constant/environments';
 import axiosInstance from '@/utils/axiosInstance';
 
@@ -26,9 +27,9 @@ const GetMemberInfo = async () => {
   }
 };
 
-const UpdateMemberInfo = async ({name, YOB}) => {
+const UpdateMemberInfo = async ({ name, YOB }) => {
   try {
-    const data = await axiosInstance.put(UPDATE_PROFILE,{name, YOB});
+    const data = await axiosInstance.put(UPDATE_PROFILE, { name, YOB });
     return data.profile;
   } catch (error) {
     const errorResponse = error;
@@ -77,16 +78,45 @@ const UpdateComment = async ({ watchId, commentId, rating, content }) => {
   }
 };
 
-
-const UpdatePassword = async ({ currentPassword, newPassword, confirmNewPassword }) => {
+const UpdatePassword = async ({
+  currentPassword,
+  newPassword,
+  confirmNewPassword,
+}) => {
   try {
-    const data = await axiosInstance.put(UPDATE_PASSWORD, { currentPassword, newPassword,confirmNewPassword });
+    const data = await axiosInstance.put(UPDATE_PASSWORD, {
+      currentPassword,
+      newPassword,
+      confirmNewPassword,
+    });
     return data;
   } catch (error) {
     const errorResponse = error;
     throw new Error(errorResponse.response?.data.message);
   }
 };
+
+const Register = async ({ membername, password, name, YOB }) => {
+  try {
+    console.log({
+      membername,
+      password,
+      name,
+      YOB,
+    });
+    const data = await axiosInstance.post(REGISTER, {
+      membername,
+      password,
+      name,
+      YOB,
+    });
+    return data;
+  } catch (error) {
+    const errorResponse = error;
+    throw new Error(errorResponse.response?.data.message);
+  }
+};
+
 const MembersManagementListAPI = {
   GetMembersList,
   GetMemberInfo,
@@ -94,7 +124,8 @@ const MembersManagementListAPI = {
   AddComment,
   DeleteComment,
   UpdateComment,
-  UpdatePassword
+  UpdatePassword,
+  Register,
 };
 
 export default MembersManagementListAPI;

@@ -4,12 +4,10 @@ import { queryClient } from '@/constant/storage';
 import MembersManagementListAPI from '@/services/membersService';
 
 const useUpdateProfile = () => {
-
-
   return useMutation({
     mutationFn: MembersManagementListAPI.UpdateMemberInfo,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['updateProfile'] });
+      queryClient.invalidateQueries({ queryKey: ['getProfile'] });
       notification.success({
         message: 'Update successfully',
         description: 'Update profile successfully',
