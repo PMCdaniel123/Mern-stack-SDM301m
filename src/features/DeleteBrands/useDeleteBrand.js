@@ -16,12 +16,14 @@ export const useDeleteBrand = (id) => {
       notification.success({
         message: 'Delete successfully',
         description: 'Delete a Brand successfully',
+        duration: 2,
       });
     },
     onError: (error) => {
       notification.error({
         message: 'Delete failed',
         description: error.message,
+        duration: 2,
       });
     },
   });

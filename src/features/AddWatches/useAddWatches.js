@@ -4,6 +4,7 @@ import { closePopup } from '@/store/reducers/popupReducer';
 import { useMutation } from '@tanstack/react-query';
 import { notification } from 'antd';
 import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 
 const useAddWatches = () => {
   const dispatch = useDispatch();
@@ -16,12 +17,14 @@ const useAddWatches = () => {
       notification.success({
         message: 'Create successfully',
         description: 'Create a new watch successfully',
+        duration: 2,
       });
     },
     onError: (error) => {
       notification.error({
         message: 'Create failed',
         description: error.message,
+        duration: 2,
       });
     },
   });

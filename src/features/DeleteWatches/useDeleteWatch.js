@@ -16,12 +16,14 @@ export const useDeleteWatch = (id) => {
       notification.success({
         message: 'Delete successfully',
         description: 'Delete a Watch successfully',
+        duration: 2,
       });
     },
     onError: (error) => {
       notification.error({
         message: 'Delete failed',
         description: error.message,
+        duration: 2,
       });
     },
   });

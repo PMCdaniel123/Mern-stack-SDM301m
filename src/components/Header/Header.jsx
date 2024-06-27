@@ -9,11 +9,11 @@ import ConfigAntdButton from '../Button/ConfigAntdButton';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 
 const LinkStyled = styled.a`
-  color: #fff !important;
+  color: #232323 !important;
   cursor: pointer;
   transition: 0.3s;
   &:hover {
-    color: rgb(225 29 72) !important;
+    color: #f43737 !important;
   }
 `;
 
@@ -33,17 +33,15 @@ const Header = () => {
         <div className="flex items-center gap-2">
           <Avatar
             src={<AccountBoxIcon />}
-            shape={"square"}
+            shape={'square'}
             // size={46}
             className="cursor-pointer"
           />
           <div className="flex flex-col">
             <Typography.Text className="text-white">Admin</Typography.Text>
-            <ConfigAntdButton type="danger">
-              <Button type="primary" onClick={_onLogout}>
-                Log out
-              </Button>
-            </ConfigAntdButton>
+            <LinkStyled href="#" onClick={_onLogout}>
+              Logout
+            </LinkStyled>
           </div>
         </div>
       </div>

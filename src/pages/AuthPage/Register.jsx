@@ -16,6 +16,7 @@ import useDebounce from '@/hooks/useDebounce';
 import { handleRegister } from '@/store/reducers/authReducer';
 import { MESS } from '@/constant/validate';
 import ComponentLoading from '@/components/ComponentLoading/ComponentLoading';
+import { PATHS } from '@/constant/path';
 
 const schema = yup
   .object({
@@ -36,6 +37,8 @@ const Register = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
+  const navigate = useNavigate();
+
   const onSubmit = async (data) => {
     if (data && !loading.register) {
       try {
@@ -47,6 +50,7 @@ const Register = () => {
           YOB: YOB,
         };
         dispatch(handleRegister(payload));
+        navigate(PATHS.MEMBER.HOME_PAGE);
       } catch (error) {
         console.log('error', error);
       }
@@ -62,7 +66,7 @@ const Register = () => {
           REGISTER
         </h2>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-        {apiLoading && <ComponentLoading />}
+          {apiLoading && <ComponentLoading />}
           <div>
             <label htmlFor="membername" className="text-base">
               Member Name

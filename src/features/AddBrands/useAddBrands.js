@@ -16,12 +16,14 @@ const useAddBrands = () => {
       notification.success({
         message: 'Create successfully',
         description: 'Create a new brand successfully',
+        duration: 2,
       });
     },
     onError: (error) => {
       notification.error({
         message: 'Create failed',
         description: error.message,
+        duration: 2,
       });
     },
   });

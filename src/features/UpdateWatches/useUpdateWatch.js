@@ -16,12 +16,14 @@ const useUpdateWatch = () => {
       notification.success({
         message: 'Update successfully',
         description: 'Update Watch successfully',
+        duration: 2,
       });
     },
     onError: (error) => {
       notification.error({
         message: 'Update failed',
         description: error.message,
+        duration: 2,
       });
     },
   });

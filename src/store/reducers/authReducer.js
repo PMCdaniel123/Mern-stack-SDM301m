@@ -1,7 +1,7 @@
 import { authService } from '@/services/authService';
 import tokenMethod from '@/utils/token';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { message, notification } from 'antd';
+import { notification } from 'antd';
 
 const initialState = {
   profile: null,
@@ -82,7 +82,7 @@ export const handleRegister = createAsyncThunk(
       if (registerRes?._id) {
         notification.success({
           message: 'Đăng ký thành công',
-          placement: 'topRight',
+          duration: 2,
         });
         thunkApi.dispatch(
           handleLogin({
@@ -97,7 +97,10 @@ export const handleRegister = createAsyncThunk(
     } catch (error) {
       const errorInfo = error?.response?.data;
       if (errorInfo?.error === 'Forbidden') {
-        message.error('Email đã được đăng ký');
+        notification.error({
+          message: 'Membername đã tồn tại',
+          duration: 2,
+        });
       }
       return thunkApi.rejectWithValue(errorInfo);
     }
@@ -119,13 +122,16 @@ export const handleLogin = createAsyncThunk(
       thunkApi.dispatch(handleGetProfile());
       notification.success({
         message: 'Đăng nhập thành công',
-        placement: 'topRight',
+        duration: 2,
       });
       return { role, token: accessToken };
     } catch (error) {
       const errorInfo = error?.response?.data;
       if (errorInfo?.error === 'Not Found') {
-        message.error('Username hoặc password không đúng');
+        notification.error({
+          message: 'Username hoặc password không đúng',
+          duration: 2,
+        });
       }
       return thunkApi.rejectWithValue(errorInfo);
     }

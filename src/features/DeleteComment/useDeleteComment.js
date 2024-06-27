@@ -16,12 +16,14 @@ export const useDeleteComment = ({ watchId, commentId }) => {
       notification.success({
         message: 'Delete successfully',
         description: 'Delete comment successfully',
+        duration: 2,
       });
     },
     onError: (error) => {
       notification.error({
         message: 'Delete failed',
         description: error.message,
+        duration: 2,
       });
     },
   });
