@@ -40,7 +40,7 @@ const Login = () => {
   const apiLoading = useDebounce(loading.login, 300);
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-cover bg-center">
+    <div className="flex  justify-center items-center min-h-screen bg-cover bg-center">
       <div className="p-10 bg-white bg-opacity-60 rounded-lg shadow-lg w-full max-w-md">
         <h2 className="text-3xl font-bold text-center mb-5 text-black">
           LOGIN

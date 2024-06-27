@@ -1,6 +1,5 @@
 import Footer from '@/components/Footer/Footer';
 import Navigation from '@/components/Navigation/Navigation';
-// import BackToTop from '@/components/BackToTop/BackToTop';
 import { MainContextProvider } from '@/context/MainContext';
 import { Layout } from 'antd';
 import { Content } from 'antd/es/layout/layout';
@@ -20,7 +19,6 @@ const MemberLayout = () => {
           <Footer />
         </Layout>
       </div>
-      {/* <BackToTop /> */}
     </MainContextProvider>
   );
 };

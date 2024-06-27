@@ -1,14 +1,28 @@
-import { Avatar, Typography, Menu, Button } from 'antd';
-import { Header as AntHeader } from 'antd/es/layout/layout';
+import React from 'react';
+import { Avatar, Typography, Menu, Button, Layout } from 'antd';
 import { useNavigate } from 'react-router-dom';
-import { NavigationItems } from '@/constant/menu-data';
 import { useDispatch, useSelector } from 'react-redux';
 import { handleLogout } from '@/store/reducers/authReducer';
 import { PATHS } from '@/constant/path';
-import React from 'react';
+import { NavigationItems } from '@/constant/menu-data';
 import PersonSharpIcon from '@mui/icons-material/PersonSharp';
 import ConfigAntdButton from '../Button/ConfigAntdButton';
 import tokenMethod from '@/utils/token';
+import styled from 'styled-components';
+
+const { Header: AntHeader } = Layout;
+
+const LinkStyled = styled.a`
+  color: #57ade7 !important;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  transition: 0.3s;
+  &:hover {
+    color: #f43737 !important;
+  }
+`;
 
 const Navigation = () => {
   const navigate = useNavigate();
@@ -16,20 +30,20 @@ const Navigation = () => {
   const { profile } = useSelector((state) => state.auth);
   const { name } = profile || {};
 
-  const _onLogout = (e) => {
+  const onLogout = (e) => {
     e?.preventDefault();
     dispatch(handleLogout());
     navigate(PATHS.HOME);
   };
 
-  const _onLogin = (e) => {
+  const onLogin = (e) => {
     e?.preventDefault();
     e?.stopPropagation();
     navigate(PATHS.LOGIN);
   };
 
   return (
-    <AntHeader className="bg-white flex justify-between items-center px-10">
+    <AntHeader className="bg-white flex justify-between items-center h-19 px-10">
       <div className="flex items-center gap-8">
         <Menu
           onClick={({ key }) => navigate(key)}
@@ -52,18 +66,16 @@ const Navigation = () => {
               shape="square"
               className="border-white border-2 cursor-pointer"
             />
-            <ConfigAntdButton type="danger">
-              <Button type="primary" onClick={_onLogout}>
-                Log out
-              </Button>
-            </ConfigAntdButton>
+            <LinkStyled href="#" onClick={onLogout}>
+              Logout
+            </LinkStyled>
           </div>
         </div>
       ) : (
         <div className="flex items-center gap-8">
-          <ConfigAntdButton type="primary">
-            <Button type="primary" onClick={_onLogin}>
-              Login
+          <ConfigAntdButton>
+            <Button type="primary" onClick={onLogin}>
+              Login / Register
             </Button>
           </ConfigAntdButton>
         </div>

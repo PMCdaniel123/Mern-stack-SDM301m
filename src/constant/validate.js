@@ -10,7 +10,16 @@ export const MESS = {
   ERROR_WATCH_NAME: 'Please enter member name.',
   ERROR_IMAGE_URL: 'Please enter image URL.',
   ERROR_PRICE: 'Please enter price.',
-  ERROR_PRICE_POSITIVE: 'Price must be greater than or equal to 0',
+  ERROR_PRICE_POSITIVE: 'Price must be greater than or equal to 100',
   ERROR_PRICE_NUMBER: 'Price must be a number',
   ERROR_BRAND_NAME_OPTION: 'Please choose brand name.',
+};
+
+export const validatePassword = (password) => {
+  const passwordRegex =
+    /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+[\]{};':"\\|,.<>/?]).{6,}$/;
+  return (
+    passwordRegex.test(password) ||
+    'Password must be at least 6 characters long including numbers and special characters'
+  );
 };

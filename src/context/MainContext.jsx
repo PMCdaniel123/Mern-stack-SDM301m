@@ -25,5 +25,4 @@ export const MainContextProvider = ({ children }) => {
   );
 };
 
-// eslint-disable-next-line react-refresh/only-export-components
 export const useMainContext = () => useContext(MainContext);

@@ -1,17 +1,8 @@
-import { Row, Col, Skeleton, Empty } from 'antd';
+import { Row, Col, Skeleton, Empty, Card } from 'antd';
 import React from 'react';
 import WatchCard from '@/components/WatchCard/WatchCard';
 import useGetWatchesList from '../WatchesPage/useGetWatchesList';
-import './Product.css';
 import WatchSearchBar from '@/components/SearchBar/Search-bar-watches';
-import styled from 'styled-components';
-
-const ProductSkeletonStyle = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding-bottom: 5%;
-`;
 
 const ProductPage = () => {
   const { data, isLoading, isError } = useGetWatchesList();
@@ -29,11 +20,16 @@ const ProductPage = () => {
         <div className="grid gap-5">
           {new Array(8).fill('').map((_, index) => {
             return (
-              <ProductSkeletonStyle key={index}>
-                <Skeleton.Image active style={{ width: '100%', height: 275 }} />
-                <Skeleton.Input />
-                <Skeleton.Input block />
-              </ProductSkeletonStyle>
+              <Card title="Card title" key={index} loading={true}>
+                <Skeleton loading={isLoading}>
+                  <Skeleton.Image
+                    active
+                    style={{ width: '100%', height: 275 }}
+                  />
+                  <Skeleton.Input />
+                  <Skeleton.Input block />
+                </Skeleton>
+              </Card>
             );
           })}
         </div>
@@ -44,7 +40,7 @@ const ProductPage = () => {
   return (
     <div style={{ padding: '20px' }}>
       <WatchSearchBar />
-      <div className="card-container">
+      <div className="card-container py-10">
         <Row gutter={[16, 16]}>
           {data.map((watch) => (
             <Col key={watch._id} xs={24} sm={12} md={8} lg={6}>

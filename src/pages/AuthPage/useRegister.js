@@ -1,22 +1,24 @@
 import { useMutation } from '@tanstack/react-query';
 import { notification } from 'antd';
-import { queryClient } from '@/constant/storage';
 import MembersManagementListAPI from '@/services/membersService';
+import { useNavigate } from 'react-router-dom';
+import { PATHS } from '@/constant/path';
 
-const useUpdatePassword = () => {
+const useRegister = () => {
+  const navigate = useNavigate();
   return useMutation({
-    mutationFn: MembersManagementListAPI.UpdatePassword,
+    mutationFn: MembersManagementListAPI.Register,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['updatePassword'] });
+      navigate(PATHS.LOGIN);
       notification.success({
-        message: 'Update successfully',
-        description: 'Update password successfully',
+        message: 'Register successfully',
+        description: 'Register successfully',
         duration: 1.5,
       });
     },
     onError: (error) => {
       notification.error({
-        message: 'Update password failed',
+        message: 'Register failed',
         description: error.message,
         duration: 1.5,
       });
@@ -24,4 +26,4 @@ const useUpdatePassword = () => {
   });
 };
 
-export default useUpdatePassword;
+export default useRegister;

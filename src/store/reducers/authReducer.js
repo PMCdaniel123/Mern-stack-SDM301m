@@ -23,7 +23,7 @@ export const authSlice = createSlice({
       state.profile = null;
       notification.success({
         message: 'Đăng xuất thành công',
-        placement: 'topRight',
+        duration: 1.5,
       });
       state.token = null;
       state.role = false;
@@ -82,7 +82,7 @@ export const handleRegister = createAsyncThunk(
       if (registerRes?._id) {
         notification.success({
           message: 'Đăng ký thành công',
-          duration: 2,
+          duration: 1.5,
         });
         thunkApi.dispatch(
           handleLogin({
@@ -99,7 +99,7 @@ export const handleRegister = createAsyncThunk(
       if (errorInfo?.error === 'Forbidden') {
         notification.error({
           message: 'Membername đã tồn tại',
-          duration: 2,
+          duration: 1.5,
         });
       }
       return thunkApi.rejectWithValue(errorInfo);
@@ -122,7 +122,7 @@ export const handleLogin = createAsyncThunk(
       thunkApi.dispatch(handleGetProfile());
       notification.success({
         message: 'Đăng nhập thành công',
-        duration: 2,
+        duration: 1.5,
       });
       return { role, token: accessToken };
     } catch (error) {
@@ -130,7 +130,7 @@ export const handleLogin = createAsyncThunk(
       if (errorInfo?.error === 'Not Found') {
         notification.error({
           message: 'Username hoặc password không đúng',
-          duration: 2,
+          duration: 1.5,
         });
       }
       return thunkApi.rejectWithValue(errorInfo);

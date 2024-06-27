@@ -16,14 +16,14 @@ const useUpdateComment = () => {
       notification.success({
         message: 'Update successfully',
         description: 'Update a comment successfully',
-        duration: 2,
+        duration: 1.5,
       });
     },
     onError: (error) => {
       notification.error({
         message: 'Failed',
         description: error.message,
-        duration: 2,
+        duration: 1.5,
       });
     },
   });

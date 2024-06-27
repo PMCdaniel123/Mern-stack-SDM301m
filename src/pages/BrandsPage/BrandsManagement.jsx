@@ -5,9 +5,19 @@ import useGetBrandsList from './useGetBrandsList';
 import ConfigAntdButton from '@/components/Button/ConfigAntdButton';
 import Popup from '@/components/Popup/Popup';
 import AddBrands from '@/features/AddBrands/AddBrands';
+import { useState } from 'react';
 
 const BrandsManagement = () => {
   const { data } = useGetBrandsList();
+  const [pagination, setPagination] = useState({
+    current: 1,
+    pageSize: 5,
+    total: data ? data.length : 0,
+  });
+
+  const handleTableChange = (pagination) => {
+    setPagination(pagination);
+  };
 
   return (
     <div>
@@ -28,7 +38,17 @@ const BrandsManagement = () => {
             </Popup>
           </div>
         </div>
-        <Table columns={BrandsColumn} dataSource={data} />
+        <Table
+          tableLayout="auto"
+          columns={BrandsColumn}
+          dataSource={data}
+          pagination={{
+            ...pagination,
+            position: ['bottomCenter'],
+            showSizeChanger: false,
+          }}
+          onChange={handleTableChange}
+        />
       </div>
     </div>
   );

@@ -1,11 +1,10 @@
-import {
-  CloseCircleOutlined,
-  EditOutlined,
-  HomeOutlined,
-  ProductOutlined,
-  ShopOutlined,
-  UserOutlined,
-} from '@ant-design/icons';
+import HomeWorkIcon from '@mui/icons-material/HomeWork';
+import BrandingWatermarkIcon from '@mui/icons-material/BrandingWatermark';
+import WatchIcon from '@mui/icons-material/Watch';
+import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
+import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { PATHS } from './path';
 import Popup from '@/components/Popup/Popup';
 import DeleteBrand from '@/features/DeleteBrands/DeleteBrand';
@@ -19,22 +18,22 @@ export const MenuItems = [
   {
     label: 'Home',
     key: PATHS.ADMIN.HOME,
-    icon: <HomeOutlined />,
+    icon: <HomeWorkIcon fontSize="large" />,
   },
   {
     label: 'Brands',
     key: PATHS.ADMIN.BRANDS,
-    icon: <ShopOutlined />,
+    icon: <BrandingWatermarkIcon fontSize="large" />,
   },
   {
     label: 'Watches',
     key: PATHS.ADMIN.WATCHES,
-    icon: <ProductOutlined />,
+    icon: <WatchIcon fontSize="large" />,
   },
   {
     label: 'Accounts',
     key: PATHS.ADMIN.ACCOUNTS,
-    icon: <UserOutlined />,
+    icon: <PeopleAltIcon fontSize="large" />,
   },
 ];
 
@@ -42,12 +41,12 @@ export const NavigationItems = [
   {
     label: 'Home',
     key: PATHS.MEMBER.HOME_PAGE,
-    icon: <HomeOutlined />,
+    icon: <HomeWorkIcon fontSize="large" />,
   },
   {
     label: 'Profile',
     key: PATHS.MEMBER.PROFILE,
-    icon: <ShopOutlined />,
+    icon: <AssignmentIndIcon fontSize="large" />,
   },
 ];
 
@@ -59,7 +58,7 @@ export const ViewBrandsOptionDropdown = (id, name) => [
       </Popup>
     ),
     key: 'edit',
-    icon: <EditOutlined />,
+    icon: <EditIcon />,
   },
   {
     label: (
@@ -68,7 +67,7 @@ export const ViewBrandsOptionDropdown = (id, name) => [
       </Popup>
     ),
     key: 'delete',
-    icon: <CloseCircleOutlined />,
+    icon: <DeleteForeverIcon />,
   },
 ];
 
@@ -80,7 +79,7 @@ export const ViewWatchesOptionDropdown = (id, name) => [
       </Popup>
     ),
     key: 'edit',
-    icon: <EditOutlined />,
+    icon: <EditIcon />,
   },
   {
     label: (
@@ -89,7 +88,7 @@ export const ViewWatchesOptionDropdown = (id, name) => [
       </Popup>
     ),
     key: 'delete',
-    icon: <CloseCircleOutlined />,
+    icon: <DeleteForeverIcon />,
   },
 ];
 
@@ -110,7 +109,7 @@ export const ViewCommentsOptionDropdown = (id, rating, content) => [
       </Popup>
     ),
     key: 'edit',
-    icon: <EditOutlined />,
+    icon: <EditIcon />,
   },
   {
     label: (
@@ -119,6 +118,6 @@ export const ViewCommentsOptionDropdown = (id, rating, content) => [
       </Popup>
     ),
     key: 'delete',
-    icon: <CloseCircleOutlined />,
+    icon: <DeleteForeverIcon />,
   },
 ];

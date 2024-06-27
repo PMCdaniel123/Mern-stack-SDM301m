@@ -16,14 +16,14 @@ const useUpdateBrand = () => {
       notification.success({
         message: 'Update successfully',
         description: 'Update Brand successfully',
-        duration: 2,
+        duration: 1.5,
       });
     },
     onError: (error) => {
       notification.error({
         message: 'Update failed',
         description: error.message,
-        duration: 2,
+        duration: 1.5,
       });
     },
   });

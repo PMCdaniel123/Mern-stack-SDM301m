@@ -6,12 +6,23 @@ import Popup from '@/components/Popup/Popup';
 import useGetWatchesList from './useGetWatchesList';
 import AddWatches from '@/features/AddWatches/AddWatches';
 import WatchSearchBar from '@/components/SearchBar/Search-bar-watches';
+import './watch-table.css';
+import { useState } from 'react';
 
 const WatchesManagement = () => {
   const { data } = useGetWatchesList();
+  const [pagination, setPagination] = useState({
+    current: 1,
+    pageSize: 5,
+    total: data ? data.length : 0,
+  });
+
+  const handleTableChange = (pagination) => {
+    setPagination(pagination);
+  };
 
   return (
-    <div>
+    <div className="w-full">
       <div className="bg-primary w-full flex items-center p-4 mt-1">
         <Typography.Title level={3} type="secondary">
           WATCHES MANAGEMENT
@@ -32,10 +43,15 @@ const WatchesManagement = () => {
         </div>
         <Table
           columns={WatchesColumn}
+          size="small"
+          tableLayout="fixed"
           dataSource={data}
-          scroll={{
-            x: 1300,
+          pagination={{
+            ...pagination,
+            position: ['bottomCenter'],
+            showSizeChanger: false,
           }}
+          onChange={handleTableChange}
         />
       </div>
     </div>

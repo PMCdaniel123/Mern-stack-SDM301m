@@ -1,5 +1,6 @@
 import { Button, Input } from 'antd';
-import { FilterOutlined, SearchOutlined } from '@ant-design/icons';
+import { SearchOutlined } from '@ant-design/icons';
+import FilterListIcon from '@mui/icons-material/FilterList';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSearchValue } from '@/store/reducers/watchReducer';
 import ConfigAntdButton from '../Button/ConfigAntdButton';
@@ -22,7 +23,10 @@ export default function WatchSearchBar() {
         defaultValue={searchValue}
       />
       <ConfigAntdButton type="primary">
-        <Button type="primary">Search</Button>
+        <Button className="!duration-300" type="primary">
+          <FilterListIcon />
+          Filter
+        </Button>
       </ConfigAntdButton>
     </div>
   );
