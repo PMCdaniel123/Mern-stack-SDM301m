@@ -19,19 +19,19 @@ import UpdateComment from '@/features/UpdateComment/UpdateComment';
 // eslint-disable-next-line react-refresh/only-export-components
 export const MenuItems = [
   {
-    label: 'Home',
+    label: 'Admin Home Page',
     key: PATHS.ADMIN.HOME,
   },
   {
-    label: 'Brands',
+    label: 'Brand Management',
     key: PATHS.ADMIN.BRANDS,
   },
   {
-    label: 'Watches',
+    label: 'Watch Management',
     key: PATHS.ADMIN.WATCHES,
   },
   {
-    label: 'Accounts',
+    label: 'Account Management',
     key: PATHS.ADMIN.ACCOUNTS,
   },
 ];

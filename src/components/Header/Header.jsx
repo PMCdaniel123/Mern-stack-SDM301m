@@ -42,7 +42,6 @@ const Header = () => {
             className="border-white border-2 cursor-pointer"
           />
           <div className="flex flex-col">
-            <Typography.Text className="text-white">Admin</Typography.Text>
             <ConfigAntdButton type="danger">
               <Button type="primary" onClick={_onLogout}>
                 Log out

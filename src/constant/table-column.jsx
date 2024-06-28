@@ -75,7 +75,7 @@ export const WatchesColumn = [
     key: 'price',
   },
   {
-    title: 'Automatic',
+    title: 'Type',
     dataIndex: 'Automatic',
     width: 200,
     key: 'Automatic',
