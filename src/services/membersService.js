@@ -20,6 +20,7 @@ const GetMembersList = async () => {
 const GetMemberInfo = async () => {
   try {
     const data = await axiosInstance.get(GET_MEMBER_INFO);
+    console.log(data.profile);
     return data.profile;
   } catch (error) {
     const errorResponse = error;

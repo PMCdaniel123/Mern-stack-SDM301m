@@ -6,6 +6,7 @@ export const PATHS = {
     HOME: '/admin/home',
     BRANDS: '/admin/brands',
     WATCHES: '/admin/watches',
+    WATCH_DETAILS: '/admin/watches/:watchId',
     ACCOUNTS: '/admin/accounts',
   },
   MEMBER: {

@@ -11,6 +11,7 @@ import MemberLayout from './layout/MemberLayout';
 import UserProfile from './pages/ProfilePage/Profile';
 import ProductPage from './pages/Product/ProductPage';
 import ProductDetail from './pages/ProductDetail/ProductDetail';
+import WatchDetail from './pages/WatchesPage/WatchDetail';
 
 const App = () => {
   return (
@@ -36,6 +37,7 @@ const App = () => {
               path={PATHS.ADMIN.ACCOUNTS}
               element={<MembersManagement />}
             />
+            <Route path={PATHS.ADMIN.WATCH_DETAILS} element={<WatchDetail />} />
           </Route>
         </Route>
       </Routes>

@@ -84,7 +84,7 @@ export const WatchesColumn = [
           {'Automatic'.toUpperCase()}
         </Tag>
       ) : (
-        <Tag color={'geekblue'} key={'Manual'}>
+        <Tag color={'magenta'} key={'Manual'}>
           {'Manual'.toUpperCase()}
         </Tag>
       ),

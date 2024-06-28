@@ -1,10 +1,9 @@
 import {
   CloseCircleOutlined,
   EditOutlined,
+  FolderViewOutlined,
   HomeOutlined,
-  LockOutlined,
   ProductOutlined,
-  ProfileOutlined,
   ShopOutlined,
   UserOutlined,
 } from '@ant-design/icons';
@@ -80,6 +79,11 @@ export const ViewBrandsOptionDropdown = (id, name) => [
 
 export const ViewWatchesOptionDropdown = (id, name) => [
   {
+    label: <Link to={PATHS.ADMIN.WATCHES + '/' + id}>View Detail</Link>,
+    key: 'view_detail',
+    icon: <FolderViewOutlined />,
+  },
+  {
     label: (
       <Popup title="Update Watch" content={<UpdateWatch id={id} />}>
         Update Watch
@@ -128,4 +132,3 @@ export const ViewCommentsOptionDropdown = (id, rating, content) => [
     icon: <CloseCircleOutlined />,
   },
 ];
-
