@@ -162,7 +162,9 @@ const ProductDetail = () => {
           ) : (
             <div></div>
           )}
-          <h1 className="font-semibold text-lg pb-4">View Comments</h1>
+          <h1 className="font-semibold text-lg pb-4">
+            View Comments <Tag color="blue">{watch.comments.length}</Tag>
+          </h1>
           {watch.comments.length > 0 ? (
             watch.comments.map((comment) => (
               <div

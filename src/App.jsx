@@ -30,7 +30,10 @@ const App = () => {
 
         <Route element={<PrivateRoute redirectPath={PATHS.LOGIN} />}>
           <Route path={PATHS.HOME} element={<MainLayout />}>
-            <Route path={PATHS.ADMIN.HOME} element={'Admin home page'} />
+            <Route
+              path={PATHS.ADMIN.HOME}
+              element={'Welcome to Pham Manh Cuong page'}
+            />
             <Route path={PATHS.ADMIN.BRANDS} element={<BrandsManagement />} />
             <Route path={PATHS.ADMIN.WATCHES} element={<WatchesManagement />} />
             <Route

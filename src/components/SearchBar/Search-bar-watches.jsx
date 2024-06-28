@@ -52,6 +52,7 @@ export default function WatchSearchBar() {
             <Tag
               key={index}
               className="inline-flex mt-1 gap-2 flex-row-reverse"
+              color="blue"
               icon={<CloseOutlined onClick={() => handleClose(item)} />}
             >
               {item}

@@ -59,6 +59,7 @@ export const WatchesColumn = [
     width: 300,
     key: 'watchName',
     fixed: 'left',
+    sorter: (a, b) => a.watchName.localeCompare(b.watchName),
   },
   {
     title: 'Image',
