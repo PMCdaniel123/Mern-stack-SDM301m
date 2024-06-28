@@ -3,9 +3,7 @@ import {
   EditOutlined,
   FolderViewOutlined,
   HomeOutlined,
-  ProductOutlined,
   ShopOutlined,
-  UserOutlined,
 } from '@ant-design/icons';
 import { PATHS } from './path';
 import { Link } from 'react-router-dom';
@@ -23,22 +21,18 @@ export const MenuItems = [
   {
     label: 'Home',
     key: PATHS.ADMIN.HOME,
-    icon: <HomeOutlined />,
   },
   {
     label: 'Brands',
     key: PATHS.ADMIN.BRANDS,
-    icon: <ShopOutlined />,
   },
   {
     label: 'Watches',
     key: PATHS.ADMIN.WATCHES,
-    icon: <ProductOutlined />,
   },
   {
     label: 'Accounts',
     key: PATHS.ADMIN.ACCOUNTS,
-    icon: <UserOutlined />,
   },
 ];
 
