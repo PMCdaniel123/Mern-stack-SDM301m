@@ -66,14 +66,18 @@ const DeleteWatches = async (id) => {
   }
 };
 
-const GetWatchesList = async (value) => {
+const GetWatchesList = async ({ brandNames, value }) => {
   try {
-    let searchValue = '';
+    let query = '';
 
-    if (value && value.length > 0) {
-      searchValue = `/search?watchName=${value}`;
+    if (value && value.length > 0 && brandNames && brandNames.length > 0) {
+      query = `?watchName=${value}&brandNames=${brandNames}`;
+    } else if (value && value.length > 0) {
+      query = `?watchName=${value}`;
+    } else if (brandNames && brandNames.length > 0) {
+      query = `?brandNames=${brandNames}`;
     }
-    const data = await axiosInstance.get(GET_WATCHES + searchValue);
+    const data = await axiosInstance.get(GET_WATCHES + query);
     return data.watches;
   } catch (error) {
     const errorResponse = error;

@@ -11,13 +11,19 @@ const WatchesManagement = () => {
   const { data } = useGetWatchesList();
 
   return (
-    <div>
-      <div className="bg-primary w-full flex items-center p-4 mt-1">
+    <div
+      style={{
+        backgroundColor: '#f9f9f9',
+        minHeight: '100vh',
+        padding: '20px',
+      }}
+    >
+      <div className="bg-white w-full flex items-center p-4 mt-1 rounded-lg shadow-sm">
         <Typography.Title level={3} type="secondary">
           WATCHES MANAGEMENT
         </Typography.Title>
       </div>
-      <div className="flex flex-col gap-4 p-4">
+      <div className="flex flex-col gap-4 p-4 mt-4 bg-white rounded-lg shadow-sm">
         <div className="flex justify-between items-center">
           <WatchSearchBar />
           <div className="flex">
@@ -36,6 +42,9 @@ const WatchesManagement = () => {
           scroll={{
             x: 1300,
           }}
+          bordered
+          pagination={{ pageSize: 5 }}
+          style={{ backgroundColor: '#fff' }}
         />
       </div>
     </div>

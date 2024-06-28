@@ -13,6 +13,7 @@ const WatchCard = ({ watch }) => {
         overflow: 'hidden',
         boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
         transition: 'transform 0.3s ease',
+        border: watch.Automatic ? '2px solid #22c55e' : 'none',
       }}
       cover={
         <img

@@ -76,7 +76,7 @@ export const WatchesColumn = [
   {
     title: 'Automatic',
     dataIndex: 'Automatic',
-    width: 100,
+    width: 200,
     key: 'Automatic',
     render: (Automatic) =>
       Automatic ? (

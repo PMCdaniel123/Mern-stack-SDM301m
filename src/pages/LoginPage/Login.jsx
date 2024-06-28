@@ -38,7 +38,7 @@ const Login = () => {
   };
 
   return (
-    <div className="bg-gray-300 flex justify-center items-center min-h-screen bg-cover bg-center">
+    <div className="bg-gray-200 flex justify-center items-center min-h-screen bg-cover bg-center">
       <div className="p-10 bg-gray-900 bg-opacity-80 rounded-lg shadow-lg w-full max-w-md">
         <h2 className="text-3xl font-bold text-center mb-5 text-white">
           LOGIN
@@ -55,7 +55,7 @@ const Login = () => {
                   {...field}
                   prefix={<UserOutlined className="site-form-item-icon" />}
                   placeholder="Member name"
-                  className="p-2"
+                  className="p-2 rounded-lg"
                 />
               )}
             />
@@ -75,7 +75,7 @@ const Login = () => {
                   prefix={<LockOutlined className="site-form-item-icon" />}
                   type="password"
                   placeholder="Password"
-                  className="p-2"
+                  className="p-2 rounded-lg"
                 />
               )}
             />
@@ -88,7 +88,7 @@ const Login = () => {
               <Button
                 type="primary"
                 htmlType="submit"
-                className="login-form-button w-full font-semibold"
+                className="login-form-button w-full font-semibold rounded-lg"
                 loading={loading.login}
               >
                 Login
@@ -96,7 +96,10 @@ const Login = () => {
             </ConfigAntdButton>
             <div className="text-center mt-2 text-white">
               Create an Account?{' '}
-              <Link to="/register" className="text-gray-400">
+              <Link
+                to="/register"
+                className="text-gray-400 hover:text-gray-200 transition-colors duration-200"
+              >
                 REGISTER
               </Link>
             </div>

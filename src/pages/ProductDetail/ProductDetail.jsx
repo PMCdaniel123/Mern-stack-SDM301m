@@ -15,7 +15,7 @@ import {
 import { Link, useParams } from 'react-router-dom';
 import { ViewCommentsOptionDropdown } from '@/constant/menu-data';
 import { useSelector } from 'react-redux';
-import { HomeOutlined } from '@ant-design/icons';
+import { CommentOutlined, HomeOutlined } from '@ant-design/icons';
 import { PATHS } from '@/constant/path';
 import useAddComment from './useAddComment';
 import Dropdown from '@/components/Dropdown/Dropdown';
@@ -72,7 +72,11 @@ const ProductDetail = () => {
         <section className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-2 px-4 pt-10">
           <div className="flex flex-col items-center">
             <div
-              className={`overflow-hidden rounded-lg max-w-[30rem] max-h-[35rem] ${watch.Automatic ? 'hover:animate-bounce' : ''}`}
+              className={`overflow-hidden rounded-lg max-w-[30rem] max-h-[35rem] transition-transform duration-300 ease-in-out ${
+                watch.Automatic
+                  ? 'hover:animate-bounce border-4 border-green-500'
+                  : ''
+              }`}
             >
               <Image
                 src={watch.image}
@@ -126,13 +130,13 @@ const ProductDetail = () => {
           {token ? (
             <div className="p-6 bg-white rounded-lg shadow-md mb-10">
               <Title level={3} className="font-semibold text-lg pb-4">
-                Post a Review & Rating
+                Comment <CommentOutlined />
               </Title>
-              <Form onFinish={handleSubmit} layout="vertical">
+              <Form onFinish={handleSubmit} layout="horizontal">
                 <Form.Item label="Rating">
                   <Rate count={3} onChange={setRating} value={rating} />
                 </Form.Item>
-                <Form.Item label="Review">
+                <Form.Item label="Content">
                   <TextArea
                     rows={1}
                     value={content}
@@ -149,7 +153,7 @@ const ProductDetail = () => {
                       disabled={addCommentMutation.isLoading}
                       className="w-full text-white font-semibold py-2 px-4 rounded-lg transition duration-300 ease-in-out"
                     >
-                      Submit Review
+                      Post
                     </Button>
                   </ConfigAntdButton>
                 </Form.Item>

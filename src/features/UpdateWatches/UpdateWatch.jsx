@@ -48,6 +48,7 @@ const UpdateWatch = ({ id }) => {
   }, [data, reset]);
 
   const handleCancel = () => {
+    reset();
     dispatch(closePopup('Update Watch'));
   };
 

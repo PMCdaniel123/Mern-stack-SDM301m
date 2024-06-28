@@ -15,6 +15,7 @@ const AddWatches = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -30,6 +31,7 @@ const AddWatches = () => {
   };
 
   const handleCancel = () => {
+    reset();
     dispatch(closePopup('Create a new watch'));
   };
 

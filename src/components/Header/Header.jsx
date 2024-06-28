@@ -4,7 +4,7 @@ import { PATHS } from '@/constant/path';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { handleLogout } from '@/store/reducers/authReducer';
-import avatar from '@/assets/avatar.svg';
+import avatar from '@/assets/admin.svg';
 import styled from 'styled-components';
 import ConfigAntdButton from '../Button/ConfigAntdButton';
 
@@ -30,7 +30,7 @@ const Header = () => {
   return (
     <AntHeader className="bg-black flex justify-between items-center">
       <img
-        src="https://static.vecteezy.com/system/resources/previews/003/189/903/large_2x/watch-classic-logo-icon-design-vector.jpg"
+        src="https://www.freepnglogos.com/uploads/rolex-png-logo/rolex-logo-png-transparent-6.png"
         alt="Logo"
         className="w-28"
       />

@@ -13,6 +13,7 @@ const AddBrands = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -23,6 +24,7 @@ const AddBrands = () => {
   };
 
   const handleCancel = () => {
+    reset();
     dispatch(closePopup('Create a new brand'));
   };
 
@@ -30,9 +32,7 @@ const AddBrands = () => {
     <div className="p-2">
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="flex m-4">
-          <h1 className="w-1/4 flex font-bold items-center mr-4">
-            Brand Name
-          </h1>
+          <h1 className="w-1/4 flex font-bold items-center mr-4">Brand Name</h1>
           <div className="w-3/4">
             <input
               type="text"

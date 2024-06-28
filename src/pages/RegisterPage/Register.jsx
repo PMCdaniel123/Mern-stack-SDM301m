@@ -32,7 +32,7 @@ const Register = () => {
   };
 
   return (
-    <div className="bg-gray-300 flex justify-center items-center min-h-screen bg-cover bg-center">
+    <div className="bg-gray-200 flex justify-center items-center min-h-screen bg-cover bg-center">
       <div className="p-10 bg-gray-900 bg-opacity-80 rounded-lg shadow-lg w-full max-w-md">
         <h2 className="text-3xl font-bold text-center mb-5 text-white">
           REGISTER
@@ -49,7 +49,7 @@ const Register = () => {
                   {...field}
                   prefix={<UserOutlined className="site-form-item-icon" />}
                   placeholder="Member name"
-                  className="p-2 w-full"
+                  className="p-2 rounded-lg w-full"
                 />
               )}
             />
@@ -72,7 +72,7 @@ const Register = () => {
                   prefix={<LockOutlined className="site-form-item-icon" />}
                   type="password"
                   placeholder="Password"
-                  className="p-2 w-full"
+                  className="p-2 rounded-lg w-full"
                 />
               )}
             />
@@ -91,7 +91,7 @@ const Register = () => {
                   {...field}
                   prefix={<SkinOutlined className="site-form-item-icon" />}
                   placeholder="Name"
-                  className="p-2 w-full"
+                  className="p-2 rounded-lg w-full"
                 />
               )}
             />
@@ -115,7 +115,7 @@ const Register = () => {
                   {...field}
                   prefix={<FieldTimeOutlined className="site-form-item-icon" />}
                   placeholder="Year of birth"
-                  className="p-2 w-full"
+                  className="p-2 rounded-lg w-full"
                 />
               )}
             />
@@ -126,14 +126,17 @@ const Register = () => {
               <Button
                 type="primary"
                 htmlType="submit"
-                className="w-full font-semibold h-[45px] text-[16px] "
+                className="w-full font-semibold h-[45px] text-[16px] rounded-lg"
               >
                 Register
               </Button>
             </ConfigAntdButton>
             <div className="text-center mt-2 text-white">
               Already have an account?{' '}
-              <Link to="/login" className="text-gray-400">
+              <Link
+                to="/login"
+                className="text-gray-400 hover:text-gray-200 transition-colors duration-200"
+              >
                 LOGIN
               </Link>
             </div>
