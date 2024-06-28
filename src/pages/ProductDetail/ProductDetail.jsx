@@ -127,7 +127,9 @@ const ProductDetail = () => {
         </section>
 
         <section className="px-10 py-8">
-          {token ? (
+          {token &&
+          watch.comments.filter((comment) => comment.author._id === member.id)
+            .length === 0 ? (
             <div className="p-6 bg-white rounded-lg shadow-md mb-10">
               <Title level={3} className="font-semibold text-lg pb-4">
                 Comment <CommentOutlined />
